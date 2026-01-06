@@ -1,27 +1,30 @@
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Gift, Trophy, Flame } from "lucide-react";
+import { ChevronLeft, ChevronRight, Gift, Trophy, Flame, ArrowRight } from "lucide-react";
 
 const promotions = [
   {
     icon: Gift,
     title: "Welcome Bonus",
-    description: "Get 100% match on your first deposit up to R1,000!",
+    description: "100% match on your first deposit up to R1,000",
     cta: "Claim Now",
-    gradient: "from-primary via-emerald-500 to-teal-400",
+    gradient: "from-primary via-emerald-400 to-teal-400",
+    bgGradient: "from-primary/20 to-transparent",
   },
   {
     icon: Trophy,
     title: "Derby Day Specials",
-    description: "Enhanced odds on all Orlando Pirates vs Kaizer Chiefs matches!",
+    description: "Enhanced odds on all Chiefs vs Pirates matches",
     cta: "View Odds",
-    gradient: "from-accent via-yellow-500 to-orange-400",
+    gradient: "from-accent via-yellow-400 to-orange-400",
+    bgGradient: "from-accent/20 to-transparent",
   },
   {
     icon: Flame,
     title: "Weekly Cashback",
-    description: "10% cashback on losses every Monday. Keep playing!",
+    description: "10% cashback on losses every Monday",
     cta: "Learn More",
     gradient: "from-red-500 via-orange-500 to-yellow-400",
+    bgGradient: "from-red-500/20 to-transparent",
   },
 ];
 
@@ -39,18 +42,18 @@ const Promotions = () => {
   const prev = () => setCurrent((prev) => (prev - 1 + promotions.length) % promotions.length);
 
   return (
-    <section id="promotions" className="section-padding bg-secondary">
+    <section id="promotions" className="section-padding bg-secondary/30">
       <div className="container mx-auto">
-        <h2 className="font-display text-3xl md:text-5xl text-foreground text-center mb-4">
-          HOT <span className="gradient-text">PROMOTIONS</span>
-        </h2>
-        <p className="text-muted-foreground text-center mb-12">
-          Exclusive bonuses to boost your winnings
-        </p>
+        <div className="text-center mb-10">
+          <p className="text-sm font-medium text-primary mb-3">Promotions</p>
+          <h2 className="font-display text-3xl md:text-4xl text-foreground">
+            Exclusive Bonuses
+          </h2>
+        </div>
 
         <div className="relative max-w-4xl mx-auto">
           {/* Slider */}
-          <div className="overflow-hidden rounded-2xl">
+          <div className="overflow-hidden rounded-3xl">
             <div
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${current * 100}%)` }}
@@ -58,24 +61,25 @@ const Promotions = () => {
               {promotions.map((promo, index) => (
                 <div
                   key={index}
-                  className={`min-w-full p-8 md:p-12 bg-gradient-to-r ${promo.gradient}`}
+                  className={`min-w-full p-8 md:p-12 bg-gradient-to-br ${promo.bgGradient} border border-border/50 backdrop-blur-xl`}
                 >
                   <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
-                    <div className="flex-shrink-0 w-20 h-20 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
-                      <promo.icon className="text-white" size={40} />
+                    <div className={`flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br ${promo.gradient} flex items-center justify-center`}>
+                      <promo.icon className="text-white" size={32} />
                     </div>
                     
                     <div className="flex-grow">
-                      <h3 className="font-display text-3xl md:text-4xl text-white mb-2">
+                      <h3 className="font-display text-2xl md:text-3xl text-foreground mb-2">
                         {promo.title}
                       </h3>
-                      <p className="text-white/80 text-lg">
+                      <p className="text-muted-foreground">
                         {promo.description}
                       </p>
                     </div>
                     
-                    <button className="flex-shrink-0 bg-white text-background font-bold px-6 py-3 rounded-lg hover:scale-105 transition-transform">
+                    <button className="btn-premium flex-shrink-0 py-3 px-6 flex items-center gap-2">
                       {promo.cta}
+                      <ArrowRight size={16} />
                     </button>
                   </div>
                 </div>
@@ -86,15 +90,15 @@ const Promotions = () => {
           {/* Navigation */}
           <button
             onClick={prev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/20 backdrop-blur hover:bg-white/30 transition-colors"
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-2.5 rounded-xl glass hover:bg-muted/50 transition-colors"
           >
-            <ChevronLeft className="text-white" size={24} />
+            <ChevronLeft size={22} />
           </button>
           <button
             onClick={next}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/20 backdrop-blur hover:bg-white/30 transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-2.5 rounded-xl glass hover:bg-muted/50 transition-colors"
           >
-            <ChevronRight className="text-white" size={24} />
+            <ChevronRight size={22} />
           </button>
 
           {/* Dots */}
@@ -103,8 +107,8 @@ const Promotions = () => {
               <button
                 key={idx}
                 onClick={() => setCurrent(idx)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  idx === current ? "bg-accent w-8" : "bg-muted-foreground"
+                className={`h-1.5 rounded-full transition-all ${
+                  idx === current ? "bg-primary w-8" : "bg-muted-foreground/30 w-1.5"
                 }`}
               />
             ))}

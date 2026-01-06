@@ -2,73 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 @layer base {
   :root {
-    /* eKasibets Brand Colors - Deep Green, Black, Gold */
-    --background: 160 10% 6%;
-    --foreground: 45 20% 95%;
+    /* Premium eKasibets - Stripe/Shopify inspired palette */
+    --background: 220 16% 4%;
+    --foreground: 210 20% 98%;
 
-    --card: 160 15% 10%;
-    --card-foreground: 45 20% 95%;
+    --card: 220 14% 7%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 160 15% 8%;
-    --popover-foreground: 45 20% 95%;
+    --popover: 220 14% 6%;
+    --popover-foreground: 210 20% 98%;
 
-    /* Primary - Deep Emerald Green */
-    --primary: 152 70% 40%;
-    --primary-foreground: 160 10% 6%;
+    /* Primary - Refined Emerald */
+    --primary: 158 64% 52%;
+    --primary-foreground: 220 16% 4%;
 
-    /* Secondary - Rich Black */
-    --secondary: 160 15% 12%;
-    --secondary-foreground: 45 20% 95%;
+    /* Secondary - Slate */
+    --secondary: 220 14% 11%;
+    --secondary-foreground: 210 20% 98%;
 
-    /* Muted */
-    --muted: 160 10% 18%;
-    --muted-foreground: 160 10% 60%;
+    /* Muted - Sophisticated gray */
+    --muted: 220 12% 14%;
+    --muted-foreground: 220 10% 55%;
 
-    /* Accent - Vibrant Gold */
-    --accent: 45 95% 55%;
-    --accent-foreground: 160 10% 6%;
+    /* Accent - Premium Gold */
+    --accent: 43 96% 58%;
+    --accent-foreground: 220 16% 4%;
+
+    /* Success */
+    --success: 142 76% 45%;
+    --success-foreground: 220 16% 4%;
+
+    /* Warning */
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 16% 4%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 45 20% 95%;
+    --destructive-foreground: 210 20% 98%;
 
-    --border: 160 15% 18%;
-    --input: 160 15% 15%;
-    --ring: 152 70% 40%;
+    --border: 220 12% 12%;
+    --input: 220 12% 10%;
+    --ring: 158 64% 52%;
 
     --radius: 0.75rem;
 
-    /* Custom tokens for eKasibets */
-    --gradient-hero: linear-gradient(135deg, hsl(160 15% 8%) 0%, hsl(152 30% 15%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(45 95% 55%) 0%, hsl(35 90% 45%) 100%);
-    --gradient-green: linear-gradient(135deg, hsl(152 70% 40%) 0%, hsl(160 60% 30%) 100%);
-    --shadow-glow: 0 0 40px hsl(152 70% 40% / 0.3);
-    --shadow-gold: 0 0 30px hsl(45 95% 55% / 0.3);
+    /* Premium tokens */
+    --gradient-premium: linear-gradient(135deg, hsl(158 64% 52%) 0%, hsl(172 66% 40%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43 96% 58%) 0%, hsl(38 90% 50%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(220 14% 7%) 0%, hsl(220 16% 4%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    --shadow-glow: 0 0 40px hsl(158 64% 52% / 0.15);
+    --shadow-gold: 0 0 30px hsl(43 96% 58% / 0.15);
+    --shadow-card: 0 4px 24px -4px rgba(0, 0, 0, 0.3);
+    --shadow-elevated: 0 8px 40px -8px rgba(0, 0, 0, 0.4);
   }
 
   .dark {
-    --background: 160 10% 6%;
-    --foreground: 45 20% 95%;
-    --card: 160 15% 10%;
-    --card-foreground: 45 20% 95%;
-    --popover: 160 15% 8%;
-    --popover-foreground: 45 20% 95%;
-    --primary: 152 70% 40%;
-    --primary-foreground: 160 10% 6%;
-    --secondary: 160 15% 12%;
-    --secondary-foreground: 45 20% 95%;
-    --muted: 160 10% 18%;
-    --muted-foreground: 160 10% 60%;
-    --accent: 45 95% 55%;
-    --accent-foreground: 160 10% 6%;
+    --background: 220 16% 4%;
+    --foreground: 210 20% 98%;
+    --card: 220 14% 7%;
+    --card-foreground: 210 20% 98%;
+    --popover: 220 14% 6%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 158 64% 52%;
+    --primary-foreground: 220 16% 4%;
+    --secondary: 220 14% 11%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 220 12% 14%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 43 96% 58%;
+    --accent-foreground: 220 16% 4%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 45 20% 95%;
-    --border: 160 15% 18%;
-    --input: 160 15% 15%;
-    --ring: 152 70% 40%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 12% 12%;
+    --input: 220 12% 10%;
+    --ring: 158 64% 52%;
   }
 }
 
@@ -78,77 +89,167 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   h1, h2, h3, .display-font {
-    font-family: 'Anton', sans-serif;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer components {
-  .btn-primary {
-    @apply bg-primary text-primary-foreground font-bold px-8 py-4 rounded-lg transition-all duration-300;
-    box-shadow: var(--shadow-glow);
+  /* Premium Button Styles */
+  .btn-premium {
+    @apply relative font-semibold px-6 py-3 rounded-xl transition-all duration-300 overflow-hidden;
+    background: var(--gradient-premium);
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--shadow-glow), 0 2px 8px rgba(0,0,0,0.2);
   }
 
-  .btn-primary:hover {
-    @apply scale-105;
-    box-shadow: 0 0 60px hsl(152 70% 40% / 0.5);
+  .btn-premium::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
+  }
+
+  .btn-premium:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-premium:hover {
+    @apply scale-[1.02];
+    box-shadow: 0 0 60px hsl(158 64% 52% / 0.3), 0 4px 16px rgba(0,0,0,0.3);
   }
 
   .btn-gold {
-    @apply font-bold px-8 py-4 rounded-lg transition-all duration-300;
+    @apply font-semibold px-6 py-3 rounded-xl transition-all duration-300;
     background: var(--gradient-gold);
-    color: hsl(var(--primary-foreground));
-    box-shadow: var(--shadow-gold);
+    color: hsl(var(--accent-foreground));
+    box-shadow: var(--shadow-gold), 0 2px 8px rgba(0,0,0,0.2);
   }
 
   .btn-gold:hover {
-    @apply scale-105;
-    box-shadow: 0 0 50px hsl(45 95% 55% / 0.5);
+    @apply scale-[1.02];
+    box-shadow: 0 0 50px hsl(43 96% 58% / 0.3), 0 4px 16px rgba(0,0,0,0.3);
   }
 
-  .btn-outline-gold {
-    @apply font-bold px-8 py-4 rounded-lg transition-all duration-300 border-2;
-    border-color: hsl(var(--accent));
-    color: hsl(var(--accent));
+  .btn-ghost {
+    @apply font-medium px-6 py-3 rounded-xl transition-all duration-300 border border-border;
+    color: hsl(var(--foreground));
+    background: transparent;
   }
 
-  .btn-outline-gold:hover {
-    background: hsl(var(--accent) / 0.1);
-    @apply scale-105;
+  .btn-ghost:hover {
+    @apply bg-muted border-muted-foreground/20;
   }
 
-  .card-betting {
-    @apply bg-card rounded-xl p-6 transition-all duration-300 border border-border;
+  /* Premium Cards */
+  .card-premium {
+    @apply relative rounded-2xl p-6 transition-all duration-300 border border-border overflow-hidden;
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-card);
   }
 
-  .card-betting:hover {
-    @apply border-primary scale-[1.02];
-    box-shadow: var(--shadow-glow);
+  .card-premium::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none;
+    background: linear-gradient(135deg, hsl(158 64% 52% / 0.05) 0%, transparent 100%);
   }
 
+  .card-premium:hover {
+    @apply border-primary/30;
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .card-premium:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Glass morphism */
+  .glass {
+    @apply rounded-2xl border border-white/5;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+  }
+
+  /* Premium gradient text */
   .gradient-text {
+    background: var(--gradient-premium);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-gold {
     background: var(--gradient-gold);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
+  /* Section styling */
   .section-padding {
-    @apply py-16 md:py-24 px-4 md:px-8;
+    @apply py-20 md:py-28 px-4 md:px-8;
   }
 
+  /* Live indicator */
+  .live-pulse {
+    @apply relative;
+  }
+
+  .live-pulse::before {
+    content: '';
+    @apply absolute w-2 h-2 rounded-full bg-destructive;
+    animation: pulse-live 2s ease-in-out infinite;
+  }
+
+  .live-pulse::after {
+    content: '';
+    @apply absolute w-2 h-2 rounded-full bg-destructive;
+  }
+
+  /* Odds badge */
+  .odds-badge {
+    @apply inline-flex items-center justify-center px-3 py-1.5 rounded-lg font-semibold text-sm transition-all duration-200;
+    background: hsl(var(--muted));
+  }
+
+  .odds-badge:hover {
+    @apply bg-primary text-primary-foreground;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .odds-badge.selected {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* Stat card */
+  .stat-card {
+    @apply rounded-2xl p-6 border border-border;
+    background: var(--gradient-glass);
+  }
+
+  /* Trust icon hover */
   .trust-icon {
-    @apply flex flex-col items-center gap-2 p-4 transition-transform duration-300;
+    @apply flex flex-col items-center gap-3 p-5 rounded-2xl transition-all duration-300;
   }
 
   .trust-icon:hover {
-    @apply scale-110;
+    @apply bg-muted/50;
+    transform: translateY(-4px);
+  }
+
+  /* Scrollbar hide */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
@@ -166,26 +267,40 @@
   }
 
   .animate-fade-in {
-    animation: fade-in 0.8s ease-out forwards;
+    animation: fade-in 0.5s ease-out forwards;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
   }
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  50% { transform: translateY(-16px); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px hsl(152 70% 40% / 0.3); }
-  50% { box-shadow: 0 0 40px hsl(152 70% 40% / 0.6); }
+  0%, 100% { box-shadow: 0 0 20px hsl(158 64% 52% / 0.2); }
+  50% { box-shadow: 0 0 40px hsl(158 64% 52% / 0.4); }
+}
+
+@keyframes pulse-live {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(2); opacity: 0; }
 }
 
 @keyframes slide-up {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
