@@ -1,34 +1,39 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const bettingOptions = [
   {
     title: "Local Football",
     subtitle: "PSL & Kasi Tournaments",
     icon: "⚽",
-    odds: "2.15",
-    gradient: "from-primary to-primary/60",
+    matches: "24 Live",
+    gradient: "from-primary/20 to-primary/5",
+    iconBg: "bg-primary/20",
   },
   {
-    title: "International Sports",
-    subtitle: "Premier League, La Liga & More",
+    title: "International",
+    subtitle: "Premier League, La Liga",
     icon: "🌍",
-    odds: "1.85",
-    gradient: "from-blue-600 to-blue-400",
+    matches: "156 Live",
+    gradient: "from-blue-500/20 to-blue-500/5",
+    iconBg: "bg-blue-500/20",
   },
   {
     title: "eSports",
     subtitle: "FIFA, PUBG, LoL",
     icon: "🎮",
-    odds: "3.20",
-    gradient: "from-purple-600 to-purple-400",
+    matches: "32 Live",
+    gradient: "from-purple-500/20 to-purple-500/5",
+    iconBg: "bg-purple-500/20",
   },
   {
     title: "Quick Games",
     subtitle: "Spin & Win Instantly",
     icon: "🎰",
-    odds: "5.00",
-    gradient: "from-accent to-yellow-400",
+    matches: "Always On",
+    gradient: "from-accent/20 to-accent/5",
+    iconBg: "bg-accent/20",
   },
 ];
 
@@ -57,34 +62,34 @@ const BettingOptions = () => {
   };
 
   return (
-    <section id="sports" className="section-padding bg-background">
+    <section id="sports" className="section-padding">
       <div className="container mx-auto">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-end justify-between mb-10">
           <div>
-            <h2 className="font-display text-3xl md:text-5xl text-foreground mb-2">
-              CHOOSE YOUR GAME
+            <p className="text-sm font-medium text-primary mb-2">Sports & Games</p>
+            <h2 className="font-display text-3xl md:text-4xl text-foreground">
+              Choose Your Game
             </h2>
-            <p className="text-muted-foreground">Local & global betting options</p>
           </div>
           
           <div className="hidden md:flex gap-2">
             <button
               onClick={() => scroll("left")}
               disabled={!canScrollLeft}
-              className={`p-3 rounded-full border border-border transition-all ${
-                canScrollLeft ? "hover:bg-muted" : "opacity-30"
+              className={`p-3 rounded-xl border border-border transition-all ${
+                canScrollLeft ? "hover:bg-muted hover:border-muted-foreground/20" : "opacity-30 cursor-not-allowed"
               }`}
             >
-              <ChevronLeft size={24} />
+              <ChevronLeft size={20} />
             </button>
             <button
               onClick={() => scroll("right")}
               disabled={!canScrollRight}
-              className={`p-3 rounded-full border border-border transition-all ${
-                canScrollRight ? "hover:bg-muted" : "opacity-30"
+              className={`p-3 rounded-xl border border-border transition-all ${
+                canScrollRight ? "hover:bg-muted hover:border-muted-foreground/20" : "opacity-30 cursor-not-allowed"
               }`}
             >
-              <ChevronRight size={24} />
+              <ChevronRight size={20} />
             </button>
           </div>
         </div>
@@ -92,35 +97,34 @@ const BettingOptions = () => {
         <div
           ref={scrollRef}
           onScroll={checkScroll}
-          className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory -mx-4 px-4"
         >
           {bettingOptions.map((option, index) => (
-            <div
+            <Link
               key={index}
-              className="card-betting min-w-[280px] md:min-w-[300px] snap-start flex-shrink-0"
+              to="/live"
+              className={`card-premium min-w-[280px] md:min-w-[300px] snap-start flex-shrink-0 bg-gradient-to-br ${option.gradient} group`}
             >
-              <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${option.gradient} mb-4`}>
-                <span className="text-3xl">{option.icon}</span>
+              <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl ${option.iconBg} mb-5`}>
+                <span className="text-2xl">{option.icon}</span>
               </div>
               
-              <h3 className="font-display text-2xl text-foreground mb-1">
+              <h3 className="font-display text-xl text-foreground mb-1">
                 {option.title}
               </h3>
-              <p className="text-muted-foreground text-sm mb-4">
+              <p className="text-muted-foreground text-sm mb-5">
                 {option.subtitle}
               </p>
               
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs text-muted-foreground">Top Odds</p>
-                  <p className="text-xl font-bold text-accent">{option.odds}</p>
-                </div>
-                <button className="btn-primary py-2 px-4 text-sm">
-                  Bet Now
-                </button>
+                <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1.5 rounded-full">
+                  {option.matches}
+                </span>
+                <span className="text-muted-foreground group-hover:text-primary transition-colors">
+                  <ArrowRight size={18} />
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

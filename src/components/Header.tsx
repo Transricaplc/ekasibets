@@ -1,75 +1,81 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
-    { label: "Sports", href: "#sports" },
-    { label: "Live Betting", href: "#live" },
-    { label: "Promotions", href: "#promotions" },
-    { label: "How It Works", href: "#how-it-works" },
+    { label: "Sports", href: "/#sports" },
+    { label: "Live Betting", href: "/live" },
+    { label: "Promotions", href: "/#promotions" },
+    { label: "How It Works", href: "/#how-it-works" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16 md:h-18">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
-            <span className="font-display text-2xl md:text-3xl text-primary">e</span>
-            <span className="font-display text-2xl md:text-3xl text-foreground">KASIBETS</span>
-          </a>
+          <Link to="/" className="flex items-center gap-1">
+            <span className="font-display text-xl md:text-2xl gradient-text font-bold">e</span>
+            <span className="font-display text-xl md:text-2xl text-foreground font-bold">Kasibets</span>
+          </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+                to={item.href}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  location.pathname === item.href 
+                    ? "text-foreground bg-muted" 
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                }`}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-4">
-            <button className="text-foreground hover:text-primary transition-colors font-medium">
-              Login
+          <div className="hidden md:flex items-center gap-3">
+            <button className="btn-ghost text-sm py-2 px-4">
+              Sign In
             </button>
-            <button className="btn-gold text-sm py-3 px-6">
-              Register Now
+            <button className="btn-premium text-sm py-2.5 px-5">
+              Get Started
             </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-foreground p-2"
+            className="md:hidden text-foreground p-2 rounded-lg hover:bg-muted transition-colors"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-slide-up">
-            <nav className="flex flex-col gap-4">
+          <div className="md:hidden py-4 border-t border-border/50 animate-slide-up">
+            <nav className="flex flex-col gap-1">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors font-medium py-2"
+                  to={item.href}
+                  className="text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors font-medium py-3 px-4 rounded-lg"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
-              <div className="flex flex-col gap-3 pt-4 border-t border-border">
-                <button className="text-foreground font-medium py-2">Login</button>
-                <button className="btn-gold py-3">Register Now</button>
+              <div className="flex flex-col gap-2 pt-4 mt-2 border-t border-border/50">
+                <button className="btn-ghost py-3">Sign In</button>
+                <button className="btn-premium py-3">Get Started</button>
               </div>
             </nav>
           </div>
