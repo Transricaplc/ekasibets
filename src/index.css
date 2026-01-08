@@ -2,84 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
-    /* Premium eKasibets - Stripe/Shopify inspired palette */
-    --background: 220 16% 4%;
-    --foreground: 210 20% 98%;
+    /* eKasibets Township Vibes - Bold, Vibrant, Street */
+    --background: 30 8% 6%;
+    --foreground: 45 100% 96%;
 
-    --card: 220 14% 7%;
-    --card-foreground: 210 20% 98%;
+    --card: 30 10% 9%;
+    --card-foreground: 45 100% 96%;
 
-    --popover: 220 14% 6%;
-    --popover-foreground: 210 20% 98%;
+    --popover: 30 10% 8%;
+    --popover-foreground: 45 100% 96%;
 
-    /* Primary - Refined Emerald */
-    --primary: 158 64% 52%;
-    --primary-foreground: 220 16% 4%;
+    /* Primary - Electric Green (SA flag inspired) */
+    --primary: 142 72% 45%;
+    --primary-foreground: 30 8% 6%;
 
-    /* Secondary - Slate */
-    --secondary: 220 14% 11%;
-    --secondary-foreground: 210 20% 98%;
+    /* Secondary - Deep charcoal */
+    --secondary: 30 8% 12%;
+    --secondary-foreground: 45 100% 96%;
 
-    /* Muted - Sophisticated gray */
-    --muted: 220 12% 14%;
-    --muted-foreground: 220 10% 55%;
+    /* Muted - Warm gray */
+    --muted: 30 6% 15%;
+    --muted-foreground: 30 10% 50%;
 
-    /* Accent - Premium Gold */
-    --accent: 43 96% 58%;
-    --accent-foreground: 220 16% 4%;
+    /* Accent - Kasi Gold/Yellow */
+    --accent: 45 100% 50%;
+    --accent-foreground: 30 8% 6%;
+
+    /* Fire - Orange/Red energy */
+    --fire: 15 90% 55%;
+    --fire-foreground: 30 8% 6%;
 
     /* Success */
-    --success: 142 76% 45%;
-    --success-foreground: 220 16% 4%;
+    --success: 142 72% 45%;
+    --success-foreground: 30 8% 6%;
 
     /* Warning */
-    --warning: 38 92% 50%;
-    --warning-foreground: 220 16% 4%;
+    --warning: 45 100% 50%;
+    --warning-foreground: 30 8% 6%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 45 100% 96%;
 
-    --border: 220 12% 12%;
-    --input: 220 12% 10%;
-    --ring: 158 64% 52%;
+    --border: 30 8% 14%;
+    --input: 30 8% 11%;
+    --ring: 142 72% 45%;
 
-    --radius: 0.75rem;
+    --radius: 0.625rem;
 
-    /* Premium tokens */
-    --gradient-premium: linear-gradient(135deg, hsl(158 64% 52%) 0%, hsl(172 66% 40%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(43 96% 58%) 0%, hsl(38 90% 50%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(220 14% 7%) 0%, hsl(220 16% 4%) 100%);
-    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-    --shadow-glow: 0 0 40px hsl(158 64% 52% / 0.15);
-    --shadow-gold: 0 0 30px hsl(43 96% 58% / 0.15);
-    --shadow-card: 0 4px 24px -4px rgba(0, 0, 0, 0.3);
-    --shadow-elevated: 0 8px 40px -8px rgba(0, 0, 0, 0.4);
+    /* Township gradients - bold and vibrant */
+    --gradient-kasi: linear-gradient(135deg, hsl(142 72% 45%) 0%, hsl(160 65% 40%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(45 100% 50%) 0%, hsl(35 95% 45%) 100%);
+    --gradient-fire: linear-gradient(135deg, hsl(15 90% 55%) 0%, hsl(0 80% 50%) 100%);
+    --gradient-street: linear-gradient(180deg, hsl(30 10% 9%) 0%, hsl(30 8% 6%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+    
+    /* Bold shadows */
+    --shadow-kasi: 0 0 50px hsl(142 72% 45% / 0.25);
+    --shadow-gold: 0 0 40px hsl(45 100% 50% / 0.25);
+    --shadow-fire: 0 0 40px hsl(15 90% 55% / 0.25);
+    --shadow-card: 0 8px 32px -8px rgba(0, 0, 0, 0.5);
+    --shadow-elevated: 0 16px 48px -12px rgba(0, 0, 0, 0.6);
   }
 
   .dark {
-    --background: 220 16% 4%;
-    --foreground: 210 20% 98%;
-    --card: 220 14% 7%;
-    --card-foreground: 210 20% 98%;
-    --popover: 220 14% 6%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 158 64% 52%;
-    --primary-foreground: 220 16% 4%;
-    --secondary: 220 14% 11%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 220 12% 14%;
-    --muted-foreground: 220 10% 55%;
-    --accent: 43 96% 58%;
-    --accent-foreground: 220 16% 4%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 220 12% 12%;
-    --input: 220 12% 10%;
-    --ring: 158 64% 52%;
+    --background: 30 8% 6%;
+    --foreground: 45 100% 96%;
+    --card: 30 10% 9%;
+    --card-foreground: 45 100% 96%;
+    --popover: 30 10% 8%;
+    --popover-foreground: 45 100% 96%;
+    --primary: 142 72% 45%;
+    --primary-foreground: 30 8% 6%;
+    --secondary: 30 8% 12%;
+    --secondary-foreground: 45 100% 96%;
+    --muted: 30 6% 15%;
+    --muted-foreground: 30 10% 50%;
+    --accent: 45 100% 50%;
+    --accent-foreground: 30 8% 6%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 45 100% 96%;
+    --border: 30 8% 14%;
+    --input: 30 8% 11%;
+    --ring: 142 72% 45%;
   }
 }
 
@@ -93,92 +101,102 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  h1, h2, h3, .display-font {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    letter-spacing: -0.02em;
+  /* Bold street typography */
+  h1, .display-xl {
+    font-family: 'Archivo Black', 'Bebas Neue', sans-serif;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+
+  h2, h3, .display-font {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
 }
 
 @layer components {
-  /* Premium Button Styles */
-  .btn-premium {
-    @apply relative font-semibold px-6 py-3 rounded-xl transition-all duration-300 overflow-hidden;
-    background: var(--gradient-premium);
+  /* Township Button - Bold & Vibrant */
+  .btn-kasi {
+    @apply relative font-bold px-7 py-4 rounded-lg transition-all duration-200 overflow-hidden uppercase tracking-wide;
+    background: var(--gradient-kasi);
     color: hsl(var(--primary-foreground));
-    box-shadow: var(--shadow-glow), 0 2px 8px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-kasi), inset 0 1px 0 rgba(255,255,255,0.2);
+    border: 2px solid transparent;
   }
 
-  .btn-premium::before {
-    content: '';
-    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
-    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
+  .btn-kasi:hover {
+    @apply scale-[1.03];
+    box-shadow: 0 0 70px hsl(142 72% 45% / 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
   }
 
-  .btn-premium:hover::before {
-    @apply opacity-100;
-  }
-
-  .btn-premium:hover {
-    @apply scale-[1.02];
-    box-shadow: 0 0 60px hsl(158 64% 52% / 0.3), 0 4px 16px rgba(0,0,0,0.3);
+  .btn-kasi:active {
+    @apply scale-[0.98];
   }
 
   .btn-gold {
-    @apply font-semibold px-6 py-3 rounded-xl transition-all duration-300;
+    @apply font-bold px-7 py-4 rounded-lg transition-all duration-200 uppercase tracking-wide;
     background: var(--gradient-gold);
     color: hsl(var(--accent-foreground));
-    box-shadow: var(--shadow-gold), 0 2px 8px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-gold), inset 0 1px 0 rgba(255,255,255,0.2);
   }
 
   .btn-gold:hover {
-    @apply scale-[1.02];
-    box-shadow: 0 0 50px hsl(43 96% 58% / 0.3), 0 4px 16px rgba(0,0,0,0.3);
+    @apply scale-[1.03];
+    box-shadow: 0 0 60px hsl(45 100% 50% / 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+
+  .btn-fire {
+    @apply font-bold px-7 py-4 rounded-lg transition-all duration-200 uppercase tracking-wide;
+    background: var(--gradient-fire);
+    color: hsl(var(--fire-foreground));
+    box-shadow: var(--shadow-fire), inset 0 1px 0 rgba(255,255,255,0.2);
+  }
+
+  .btn-fire:hover {
+    @apply scale-[1.03];
+    box-shadow: 0 0 60px hsl(15 90% 55% / 0.4);
   }
 
   .btn-ghost {
-    @apply font-medium px-6 py-3 rounded-xl transition-all duration-300 border border-border;
+    @apply font-semibold px-6 py-3 rounded-lg transition-all duration-200 border-2 border-border uppercase tracking-wide;
     color: hsl(var(--foreground));
     background: transparent;
   }
 
   .btn-ghost:hover {
-    @apply bg-muted border-muted-foreground/20;
+    @apply bg-muted border-primary/50;
   }
 
-  /* Premium Cards */
-  .card-premium {
-    @apply relative rounded-2xl p-6 transition-all duration-300 border border-border overflow-hidden;
+  /* Township Cards - Bold borders */
+  .card-kasi {
+    @apply relative rounded-xl p-6 transition-all duration-300 border-2 border-border overflow-hidden;
     background: var(--gradient-glass);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(16px);
     box-shadow: var(--shadow-card);
   }
 
-  .card-premium::before {
+  .card-kasi::before {
     content: '';
-    @apply absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none;
-    background: linear-gradient(135deg, hsl(158 64% 52% / 0.05) 0%, transparent 100%);
+    @apply absolute top-0 left-0 right-0 h-1;
+    background: var(--gradient-kasi);
   }
 
-  .card-premium:hover {
-    @apply border-primary/30;
+  .card-kasi:hover {
+    @apply border-primary/50;
     box-shadow: var(--shadow-elevated);
   }
 
-  .card-premium:hover::before {
-    @apply opacity-100;
-  }
-
-  /* Glass morphism */
+  /* Street glass effect */
   .glass {
-    @apply rounded-2xl border border-white/5;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(20px);
+    @apply rounded-xl border-2 border-white/10;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
   }
 
-  /* Premium gradient text */
+  /* Vibrant gradient text */
   .gradient-text {
-    background: var(--gradient-premium);
+    background: var(--gradient-kasi);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -191,56 +209,78 @@
     background-clip: text;
   }
 
-  /* Section styling */
-  .section-padding {
-    @apply py-20 md:py-28 px-4 md:px-8;
+  .gradient-text-fire {
+    background: var(--gradient-fire);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  /* Live indicator */
+  /* Section styling */
+  .section-padding {
+    @apply py-16 md:py-24 px-4 md:px-8;
+  }
+
+  /* Live indicator - more vibrant */
   .live-pulse {
     @apply relative;
   }
 
   .live-pulse::before {
     content: '';
-    @apply absolute w-2 h-2 rounded-full bg-destructive;
-    animation: pulse-live 2s ease-in-out infinite;
+    @apply absolute w-3 h-3 rounded-full;
+    background: hsl(var(--fire));
+    animation: pulse-live 1.5s ease-in-out infinite;
   }
 
   .live-pulse::after {
     content: '';
-    @apply absolute w-2 h-2 rounded-full bg-destructive;
+    @apply absolute w-3 h-3 rounded-full;
+    background: hsl(var(--fire));
   }
 
-  /* Odds badge */
+  /* Odds badge - township style */
   .odds-badge {
-    @apply inline-flex items-center justify-center px-3 py-1.5 rounded-lg font-semibold text-sm transition-all duration-200;
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-bold text-sm transition-all duration-200 uppercase;
     background: hsl(var(--muted));
+    border: 2px solid transparent;
   }
 
   .odds-badge:hover {
     @apply bg-primary text-primary-foreground;
-    box-shadow: var(--shadow-glow);
+    box-shadow: var(--shadow-kasi);
   }
 
   .odds-badge.selected {
     @apply bg-primary text-primary-foreground;
+    border-color: hsl(var(--accent));
   }
 
   /* Stat card */
   .stat-card {
-    @apply rounded-2xl p-6 border border-border;
+    @apply rounded-xl p-6 border-2 border-border;
     background: var(--gradient-glass);
   }
 
-  /* Trust icon hover */
+  /* Trust icon */
   .trust-icon {
-    @apply flex flex-col items-center gap-3 p-5 rounded-2xl transition-all duration-300;
+    @apply flex flex-col items-center gap-3 p-5 rounded-xl transition-all duration-300 border-2 border-transparent;
   }
 
   .trust-icon:hover {
-    @apply bg-muted/50;
+    @apply bg-muted/50 border-primary/30;
     transform: translateY(-4px);
+  }
+
+  /* Kasi stripe accent */
+  .kasi-stripe {
+    @apply relative;
+  }
+
+  .kasi-stripe::after {
+    content: '';
+    @apply absolute bottom-0 left-0 right-0 h-1;
+    background: var(--gradient-kasi);
   }
 
   /* Scrollbar hide */
@@ -251,47 +291,59 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  /* Township pattern overlay */
+  .pattern-overlay {
+    background-image: 
+      linear-gradient(30deg, rgba(255,255,255,0.02) 12%, transparent 12.5%, transparent 87%, rgba(255,255,255,0.02) 87.5%),
+      linear-gradient(150deg, rgba(255,255,255,0.02) 12%, transparent 12.5%, transparent 87%, rgba(255,255,255,0.02) 87.5%);
+    background-size: 40px 70px;
+  }
 }
 
 @layer utilities {
   .animate-float {
-    animation: float 6s ease-in-out infinite;
+    animation: float 5s ease-in-out infinite;
   }
 
   .animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
+    animation: pulse-glow 1.5s ease-in-out infinite;
   }
 
   .animate-slide-up {
-    animation: slide-up 0.6s ease-out forwards;
+    animation: slide-up 0.5s ease-out forwards;
   }
 
   .animate-fade-in {
-    animation: fade-in 0.5s ease-out forwards;
+    animation: fade-in 0.4s ease-out forwards;
   }
 
-  .animate-shimmer {
-    animation: shimmer 2s linear infinite;
+  .animate-shake {
+    animation: shake 0.5s ease-in-out;
+  }
+
+  .animate-bounce-in {
+    animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-16px); }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(1deg); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px hsl(158 64% 52% / 0.2); }
-  50% { box-shadow: 0 0 40px hsl(158 64% 52% / 0.4); }
+  0%, 100% { box-shadow: 0 0 20px hsl(142 72% 45% / 0.3); }
+  50% { box-shadow: 0 0 50px hsl(142 72% 45% / 0.5); }
 }
 
 @keyframes pulse-live {
   0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(2); opacity: 0; }
+  50% { transform: scale(2.5); opacity: 0; }
 }
 
 @keyframes slide-up {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -300,7 +352,15 @@
   to { opacity: 1; }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
 }
