@@ -5,6 +5,7 @@ import BettingOptions from "@/components/BettingOptions";
 import WhyDifferent from "@/components/WhyDifferent";
 import HowItWorks from "@/components/HowItWorks";
 import Promotions from "@/components/Promotions";
+import TownshipGallery from "@/components/TownshipGallery";
 import Testimonials from "@/components/Testimonials";
 import StadiumGallery from "@/components/StadiumGallery";
 import ResponsibleBetting from "@/components/ResponsibleBetting";
@@ -18,6 +19,7 @@ const Index = () => {
       <TrustBar />
       <BettingOptions />
       <WhyDifferent />
+      <TownshipGallery />
       <HowItWorks />
       <Promotions />
       <Testimonials />
