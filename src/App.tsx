@@ -10,6 +10,7 @@ import CommunityHub from "./pages/CommunityHub";
 import WalletPayments from "./pages/WalletPayments";
 import ResponsibleGaming from "./pages/ResponsibleGaming";
 import AboutUs from "./pages/AboutUs";
+import EventsToursPage from "./pages/EventsToursPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/live" element={<LiveBetting />} />
             <Route path="/community" element={<CommunityHub />} />
             <Route path="/wallet" element={<WalletPayments />} />
+            <Route path="/events" element={<EventsToursPage />} />
             <Route path="/responsible-gaming" element={<ResponsibleGaming />} />
             <Route path="/about" element={<AboutUs />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

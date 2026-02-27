@@ -2,160 +2,141 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap');
-
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    /* eKasibets Township Vibes - Bold, Vibrant, Street */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    /* eKasibets Light - Black & Gold Township Energy */
+    --background: 45 10% 97%;
+    --foreground: 40 10% 8%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card: 45 10% 95%;
+    --card-foreground: 40 10% 8%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover: 45 10% 97%;
+    --popover-foreground: 40 10% 8%;
 
-    /* Primary - Electric Green (SA flag inspired) */
-    --primary: 0 0% 0%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 45 100% 50%;
+    --primary-foreground: 40 10% 8%;
 
-    /* Secondary - Deep charcoal */
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 40 8% 90%;
+    --secondary-foreground: 40 10% 8%;
 
-    /* Muted - Warm gray */
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 40 8% 90%;
+    --muted-foreground: 40 5% 45%;
 
-    /* Accent - Kasi Gold/Yellow */
-    --accent: 0 0% 90%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 45 100% 50%;
+    --accent-foreground: 40 10% 8%;
 
-    /* Fire - Orange/Red energy */
-    --fire: 15 90% 55%;
-    --fire-foreground: 30 8% 6%;
+    --fire: 0 80% 55%;
+    --fire-foreground: 0 0% 100%;
 
-    /* Success */
     --success: 142 72% 45%;
-    --success-foreground: 30 8% 6%;
+    --success-foreground: 0 0% 100%;
 
-    /* Warning */
     --warning: 45 100% 50%;
-    --warning-foreground: 30 8% 6%;
+    --warning-foreground: 40 10% 8%;
+
+    --kasi-gold: 45 100% 50%;
+    --kasi-gold-dark: 40 95% 42%;
+    --kasi-red: 0 80% 55%;
+    --kasi-green: 142 72% 45%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 0%;
-    --input: 0 0% 0%;
-    --ring: 0 0% 0%;
+    --border: 40 8% 82%;
+    --input: 40 8% 82%;
+    --ring: 45 100% 50%;
 
-    --radius: 0rem;
+    --radius: 0.75rem;
 
-    /* Township gradients - bold and vibrant */
-    --gradient-kasi: linear-gradient(135deg, hsl(142 72% 45%) 0%, hsl(160 65% 40%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(45 100% 50%) 0%, hsl(35 95% 45%) 100%);
-    --gradient-fire: linear-gradient(135deg, hsl(15 90% 55%) 0%, hsl(0 80% 50%) 100%);
-    --gradient-street: linear-gradient(180deg, hsl(30 10% 9%) 0%, hsl(30 8% 6%) 100%);
-    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+    /* Township gradients */
+    --gradient-kasi: linear-gradient(135deg, hsl(45 100% 50%) 0%, hsl(40 95% 42%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(45 100% 55%) 0%, hsl(35 95% 45%) 100%);
+    --gradient-fire: linear-gradient(135deg, hsl(0 80% 55%) 0%, hsl(350 75% 45%) 100%);
+    --gradient-street: linear-gradient(180deg, hsl(40 10% 8%) 0%, hsl(40 10% 4%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.01) 100%);
 
     /* Bold shadows */
-    --shadow-kasi: 0 0 50px hsl(142 72% 45% / 0.25);
-    --shadow-gold: 0 0 40px hsl(45 100% 50% / 0.25);
-    --shadow-fire: 0 0 40px hsl(15 90% 55% / 0.25);
-    --shadow-card: 0 8px 32px -8px rgba(0, 0, 0, 0.5);
-    --shadow-elevated: 0 16px 48px -12px rgba(0, 0, 0, 0.6);
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --sidebar: 0 0% 98%;
-    --sidebar-foreground: 0 0% 0%;
-    --sidebar-primary: 0 0% 0%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 90%;
-    --sidebar-accent-foreground: 0 0% 0%;
-    --sidebar-border: 0 0% 0%;
-    --sidebar-ring: 0 0% 0%;
-    --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
-    --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-    --font-mono: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-    --shadow-2xs: 1px 1px 0px 0px #000000;
-    --shadow-xs: 2px 2px 0px 0px #000000;
-    --shadow-sm: 3px 3px 0px 0px #000000;
-    --shadow: 5px 5px 0px 0px #000000;
-    --shadow-md: 8px 8px 0px 0px #000000;
-    --shadow-lg: 12px 12px 0px 0px #000000;
-    --shadow-xl: 16px 16px 0px 0px #000000;
-    --shadow-2xl: 24px 24px 0px 0px #000000;
-    --tracking-normal: 0em;
-    --spacing: 0.25rem;
+    --shadow-kasi: 0 0 50px hsl(45 100% 50% / 0.3);
+    --shadow-gold: 0 0 40px hsl(45 100% 50% / 0.3);
+    --shadow-fire: 0 0 40px hsl(0 80% 55% / 0.3);
+    --shadow-card: 0 8px 32px -8px rgba(0, 0, 0, 0.15);
+    --shadow-elevated: 0 16px 48px -12px rgba(0, 0, 0, 0.25);
+
+    --chart-1: 45 100% 50%;
+    --chart-2: 0 80% 55%;
+    --chart-3: 142 72% 45%;
+    --chart-4: 200 70% 50%;
+    --chart-5: 280 65% 55%;
+
+    --sidebar: 40 10% 95%;
+    --sidebar-foreground: 40 10% 8%;
+    --sidebar-primary: 45 100% 50%;
+    --sidebar-primary-foreground: 40 10% 8%;
+    --sidebar-accent: 40 8% 90%;
+    --sidebar-accent-foreground: 40 10% 8%;
+    --sidebar-border: 40 8% 82%;
+    --sidebar-ring: 45 100% 50%;
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 0%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
-    --accent: 0 0% 15%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62% 30%;
+    /* eKasibets Dark - Black & Gold with Red Energy */
+    --background: 40 10% 4%;
+    --foreground: 45 15% 95%;
+
+    --card: 40 10% 7%;
+    --card-foreground: 45 15% 95%;
+
+    --popover: 40 10% 7%;
+    --popover-foreground: 45 15% 95%;
+
+    --primary: 45 100% 50%;
+    --primary-foreground: 40 10% 4%;
+
+    --secondary: 40 8% 12%;
+    --secondary-foreground: 45 15% 90%;
+
+    --muted: 40 8% 12%;
+    --muted-foreground: 40 5% 55%;
+
+    --accent: 45 100% 50%;
+    --accent-foreground: 40 10% 4%;
+
+    --fire: 0 80% 55%;
+    --fire-foreground: 0 0% 100%;
+
+    --kasi-gold: 45 100% 50%;
+    --kasi-gold-dark: 40 95% 42%;
+    --kasi-red: 0 80% 55%;
+    --kasi-green: 142 72% 45%;
+
+    --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 100%;
-    --input: 0 0% 100%;
-    --ring: 0 0% 100%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar: 0 0% 5%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 0 0% 100%;
-    --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent: 0 0% 15%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 100%;
-    --sidebar-ring: 0 0% 100%;
-    --shadow-2xs: 1px 1px 0px 0px #ffffff;
-    --shadow-xs: 2px 2px 0px 0px #ffffff;
-    --shadow-sm: 3px 3px 0px 0px #ffffff;
-    --shadow: 5px 5px 0px 0px #ffffff;
-    --shadow-md: 8px 8px 0px 0px #ffffff;
-    --shadow-lg: 12px 12px 0px 0px #ffffff;
-    --shadow-xl: 16px 16px 0px 0px #ffffff;
-    --shadow-2xl: 24px 24px 0px 0px #ffffff;
-    --radius: 0rem;
+
+    --border: 40 8% 18%;
+    --input: 40 8% 18%;
+    --ring: 45 100% 50%;
+
+    --chart-1: 45 100% 50%;
+    --chart-2: 0 80% 55%;
+    --chart-3: 142 72% 45%;
+    --chart-4: 200 70% 60%;
+    --chart-5: 280 65% 60%;
+
+    --sidebar: 40 10% 6%;
+    --sidebar-foreground: 45 15% 95%;
+    --sidebar-primary: 45 100% 50%;
+    --sidebar-primary-foreground: 40 10% 4%;
+    --sidebar-accent: 40 8% 12%;
+    --sidebar-accent-foreground: 45 15% 90%;
+    --sidebar-border: 40 8% 18%;
+    --sidebar-ring: 45 100% 50%;
+
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    --shadow-card: 0 8px 32px -8px rgba(0, 0, 0, 0.6);
+    --shadow-elevated: 0 16px 48px -12px rgba(0, 0, 0, 0.7);
   }
 }
 
@@ -184,7 +165,7 @@
 }
 
 @layer components {
-  /* Township Button - Bold & Vibrant */
+  /* Township Button - Black & Gold Energy */
   .btn-kasi {
     @apply relative font-bold px-7 py-4 rounded-lg transition-all duration-200 overflow-hidden uppercase tracking-wide;
     background: var(--gradient-kasi);
@@ -195,7 +176,7 @@
 
   .btn-kasi:hover {
     @apply scale-[1.03];
-    box-shadow: 0 0 70px hsl(142 72% 45% / 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+    box-shadow: 0 0 70px hsl(45 100% 50% / 0.5), inset 0 1px 0 rgba(255,255,255,0.3);
   }
 
   .btn-kasi:active {
@@ -205,7 +186,7 @@
   .btn-gold {
     @apply font-bold px-7 py-4 rounded-lg transition-all duration-200 uppercase tracking-wide;
     background: var(--gradient-gold);
-    color: hsl(var(--accent-foreground));
+    color: hsl(var(--primary-foreground));
     box-shadow: var(--shadow-gold), inset 0 1px 0 rgba(255,255,255,0.2);
   }
 
@@ -223,7 +204,7 @@
 
   .btn-fire:hover {
     @apply scale-[1.03];
-    box-shadow: 0 0 60px hsl(15 90% 55% / 0.4);
+    box-shadow: 0 0 60px hsl(0 80% 55% / 0.4);
   }
 
   .btn-ghost {
@@ -233,14 +214,14 @@
   }
 
   .btn-ghost:hover {
-    @apply bg-muted border-primary/50;
+    @apply border-primary/50;
+    background: hsl(var(--primary) / 0.1);
   }
 
-  /* Township Cards - Bold borders */
+  /* Township Cards - Gold accent borders */
   .card-kasi {
-    @apply relative rounded-xl p-6 transition-all duration-300 border-2 border-border overflow-hidden;
-    background: var(--gradient-glass);
-    backdrop-filter: blur(16px);
+    @apply relative rounded-xl p-6 transition-all duration-300 border border-border overflow-hidden;
+    background: hsl(var(--card));
     box-shadow: var(--shadow-card);
   }
 
@@ -257,12 +238,12 @@
 
   /* Street glass effect */
   .glass {
-    @apply rounded-xl border-2 border-white/10;
-    background: rgba(255, 255, 255, 0.05);
+    @apply rounded-xl border border-primary/20;
+    background: hsl(var(--card) / 0.8);
     backdrop-filter: blur(16px);
   }
 
-  /* Vibrant gradient text */
+  /* Vibrant gradient text - now gold */
   .gradient-text {
     background: var(--gradient-kasi);
     -webkit-background-clip: text;
@@ -289,7 +270,7 @@
     @apply py-16 md:py-24 px-4 md:px-8;
   }
 
-  /* Live indicator - more vibrant */
+  /* Live indicator */
   .live-pulse {
     @apply relative;
   }
@@ -307,7 +288,7 @@
     background: hsl(var(--fire));
   }
 
-  /* Odds badge - township style */
+  /* Odds badge */
   .odds-badge {
     @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-bold text-sm transition-all duration-200 uppercase;
     background: hsl(var(--muted));
@@ -315,19 +296,21 @@
   }
 
   .odds-badge:hover {
-    @apply bg-primary text-primary-foreground;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
     box-shadow: var(--shadow-kasi);
   }
 
   .odds-badge.selected {
-    @apply bg-primary text-primary-foreground;
-    border-color: hsl(var(--accent));
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-color: hsl(var(--primary));
   }
 
   /* Stat card */
   .stat-card {
-    @apply rounded-xl p-6 border-2 border-border;
-    background: var(--gradient-glass);
+    @apply rounded-xl p-6 border border-border;
+    background: hsl(var(--card));
   }
 
   /* Trust icon */
@@ -336,7 +319,8 @@
   }
 
   .trust-icon:hover {
-    @apply bg-muted/50 border-primary/30;
+    @apply border-primary/30;
+    background: hsl(var(--primary) / 0.08);
     transform: translateY(-4px);
   }
 
@@ -363,9 +347,21 @@
   /* Township pattern overlay */
   .pattern-overlay {
     background-image: 
-      linear-gradient(30deg, rgba(255,255,255,0.02) 12%, transparent 12.5%, transparent 87%, rgba(255,255,255,0.02) 87.5%),
-      linear-gradient(150deg, rgba(255,255,255,0.02) 12%, transparent 12.5%, transparent 87%, rgba(255,255,255,0.02) 87.5%);
+      linear-gradient(30deg, hsl(var(--primary) / 0.03) 12%, transparent 12.5%, transparent 87%, hsl(var(--primary) / 0.03) 87.5%),
+      linear-gradient(150deg, hsl(var(--primary) / 0.03) 12%, transparent 12.5%, transparent 87%, hsl(var(--primary) / 0.03) 87.5%);
     background-size: 40px 70px;
+  }
+
+  /* Ambassador card */
+  .ambassador-card {
+    @apply relative rounded-xl overflow-hidden border border-border transition-all duration-300;
+    background: hsl(var(--card));
+  }
+
+  .ambassador-card:hover {
+    @apply border-primary/50;
+    box-shadow: var(--shadow-kasi);
+    transform: translateY(-4px);
   }
 }
 
@@ -393,6 +389,10 @@
   .animate-bounce-in {
     animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
 }
 
 @keyframes float {
@@ -401,8 +401,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px hsl(142 72% 45% / 0.3); }
-  50% { box-shadow: 0 0 50px hsl(142 72% 45% / 0.5); }
+  0%, 100% { box-shadow: 0 0 20px hsl(45 100% 50% / 0.3); }
+  50% { box-shadow: 0 0 50px hsl(45 100% 50% / 0.6); }
 }
 
 @keyframes pulse-live {
@@ -431,4 +431,9 @@
   50% { transform: scale(1.05); }
   70% { transform: scale(0.9); }
   100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
