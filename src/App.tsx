@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/LanguageContext";
+import MainLayout from "@/layouts/MainLayout";
 import Index from "./pages/Index";
 import LiveBetting from "./pages/LiveBetting";
 import CommunityHub from "./pages/CommunityHub";
@@ -22,17 +23,18 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/live" element={<LiveBetting />} />
-            <Route path="/community" element={<CommunityHub />} />
-            <Route path="/wallet" element={<WalletPayments />} />
-            <Route path="/events" element={<EventsToursPage />} />
-            <Route path="/responsible-gaming" element={<ResponsibleGaming />} />
-            <Route path="/about" element={<AboutUs />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <MainLayout>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/live" element={<LiveBetting />} />
+              <Route path="/community" element={<CommunityHub />} />
+              <Route path="/wallet" element={<WalletPayments />} />
+              <Route path="/events" element={<EventsToursPage />} />
+              <Route path="/responsible-gaming" element={<ResponsibleGaming />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </MainLayout>
         </BrowserRouter>
       </TooltipProvider>
     </LanguageProvider>

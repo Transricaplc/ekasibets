@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { TrendingUp, TrendingDown, Clock, Users, ChevronRight, Search, Filter, Radio } from "lucide-react";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 // Mock live matches data
@@ -167,9 +166,7 @@ const LiveBetting = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      
-      <main className="pt-20">
+      <main>
         {/* Hero Banner */}
         <div className="relative py-12 md:py-16 border-b border-border/50 bg-gradient-to-b from-primary/5 to-transparent">
           <div className="container mx-auto px-4">

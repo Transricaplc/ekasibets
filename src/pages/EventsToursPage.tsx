@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Calendar, MapPin, Music, Ticket, Trophy, Filter, Search } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -30,8 +29,7 @@ const EventsToursPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      <main className="pt-20">
+      <main>
         {/* Hero */}
         <section className="section-padding pattern-overlay">
           <div className="container mx-auto text-center">
