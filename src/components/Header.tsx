@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Zap, Search, Globe, ChevronDown, User } from "lucide-react";
+import { Menu, X, Zap, Search, Globe, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Language } from "@/i18n/translations";
@@ -16,19 +16,19 @@ const Header = () => {
     { label: t("nav_live"), href: "/live", hot: true },
     { label: t("nav_community"), href: "/community" },
     { label: t("nav_wallet"), href: "/wallet" },
+    { label: t("nav_events"), href: "/events", isNew: true },
     { label: t("nav_promos"), href: "/#promotions" },
-    { label: t("nav_how"), href: "/#how-it-works" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-border bg-background/90 backdrop-blur-xl">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur-xl">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-18">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-0.5 flex-shrink-0">
             <span className="font-display text-2xl md:text-3xl gradient-text">e</span>
             <span className="font-display text-2xl md:text-3xl text-foreground">KASI</span>
-            <span className="font-display text-2xl md:text-3xl gradient-text-gold">BETS</span>
+            <span className="font-display text-2xl md:text-3xl gradient-text">BETS</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -49,6 +49,11 @@ const Header = () => {
                     Hot
                   </span>
                 )}
+                {item.isNew && (
+                  <span className="absolute -top-1 -right-1 px-1.5 py-0.5 text-[10px] font-bold bg-primary text-primary-foreground rounded uppercase">
+                    New
+                  </span>
+                )}
               </Link>
             ))}
           </nav>
@@ -64,7 +69,7 @@ const Header = () => {
                 <Search size={18} />
               </button>
               {isSearchOpen && (
-                <div className="absolute right-0 top-full mt-2 w-80 p-2 bg-card border-2 border-border rounded-xl shadow-lg animate-slide-up">
+                <div className="absolute right-0 top-full mt-2 w-80 p-2 bg-card border border-border rounded-xl shadow-lg animate-slide-up">
                   <input
                     type="text"
                     placeholder={t("nav_search_placeholder")}
@@ -86,7 +91,7 @@ const Header = () => {
                 <ChevronDown size={14} />
               </button>
               {isLangOpen && (
-                <div className="absolute right-0 top-full mt-2 w-48 bg-card border-2 border-border rounded-xl shadow-lg animate-slide-up overflow-hidden">
+                <div className="absolute right-0 top-full mt-2 w-48 bg-card border border-border rounded-xl shadow-lg animate-slide-up overflow-hidden">
                   {(Object.keys(languages) as Language[]).map((lang) => (
                     <button
                       key={lang}
@@ -116,7 +121,6 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-2">
-            {/* Mobile Language */}
             <div className="relative">
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
@@ -125,7 +129,7 @@ const Header = () => {
                 <Globe size={20} />
               </button>
               {isLangOpen && (
-                <div className="absolute right-0 top-full mt-2 w-44 bg-card border-2 border-border rounded-xl shadow-lg animate-slide-up overflow-hidden z-50">
+                <div className="absolute right-0 top-full mt-2 w-44 bg-card border border-border rounded-xl shadow-lg animate-slide-up overflow-hidden z-50">
                   {(Object.keys(languages) as Language[]).map((lang) => (
                     <button
                       key={lang}
@@ -153,13 +157,12 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t-2 border-border animate-slide-up">
-            {/* Mobile Search */}
+          <div className="lg:hidden py-4 border-t border-border animate-slide-up">
             <div className="mb-4">
               <input
                 type="text"
                 placeholder={t("nav_search_placeholder")}
-                className="w-full px-4 py-3 bg-muted border-2 border-border rounded-xl text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary"
+                className="w-full px-4 py-3 bg-muted border border-border rounded-xl text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary"
               />
             </div>
 
@@ -172,15 +175,21 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
-                  {item.hot && (
-                    <span className="px-2 py-0.5 text-[10px] font-bold bg-fire text-fire-foreground rounded uppercase">
-                      Hot
-                    </span>
-                  )}
+                  <div className="flex gap-1">
+                    {item.hot && (
+                      <span className="px-2 py-0.5 text-[10px] font-bold bg-fire text-fire-foreground rounded uppercase">
+                        Hot
+                      </span>
+                    )}
+                    {item.isNew && (
+                      <span className="px-2 py-0.5 text-[10px] font-bold bg-primary text-primary-foreground rounded uppercase">
+                        New
+                      </span>
+                    )}
+                  </div>
                 </Link>
               ))}
               
-              {/* Extra mobile nav items */}
               <Link
                 to="/responsible-gaming"
                 className="text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors font-bold uppercase tracking-wide py-3 px-4 rounded-lg"
@@ -196,7 +205,7 @@ const Header = () => {
                 {t("nav_about")}
               </Link>
 
-              <div className="flex flex-col gap-2 pt-4 mt-2 border-t-2 border-border">
+              <div className="flex flex-col gap-2 pt-4 mt-2 border-t border-border">
                 <button className="btn-ghost py-3">{t("nav_signin")}</button>
                 <button className="btn-kasi py-3 flex items-center justify-center gap-2">
                   <Zap size={18} className="fill-current" />

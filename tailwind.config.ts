@@ -14,43 +14,10 @@ export default {
   	},
   	extend: {
   		fontFamily: {
-  			sans: [
-  				'Space Grotesk',
-  				'ui-sans-serif',
-  				'system-ui',
-  				'-apple-system',
-  				'BlinkMacSystemFont',
-  				'Segoe UI',
-  				'Roboto',
-  				'Helvetica Neue',
-  				'Arial',
-  				'Noto Sans',
-  				'sans-serif'
-  			],
-  			display: [
-  				'Space Grotesk',
-  				'sans-serif'
-  			],
-  			serif: [
-  				'Lora',
-  				'ui-serif',
-  				'Georgia',
-  				'Cambria',
-  				'Times New Roman',
-  				'Times',
-  				'serif'
-  			],
-  			mono: [
-  				'Space Mono',
-  				'ui-monospace',
-  				'SFMono-Regular',
-  				'Menlo',
-  				'Monaco',
-  				'Consolas',
-  				'Liberation Mono',
-  				'Courier New',
-  				'monospace'
-  			]
+  			sans: ['Space Grotesk', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+  			display: ['Archivo Black', 'Bebas Neue', 'sans-serif'],
+  			serif: ['Georgia', 'serif'],
+  			mono: ['ui-monospace', 'SFMono-Regular', 'monospace']
   		},
   		colors: {
   			border: 'hsl(var(--border))',
@@ -86,6 +53,10 @@ export default {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
   			},
+  			fire: {
+  				DEFAULT: 'hsl(var(--fire))',
+  				foreground: 'hsl(var(--fire-foreground))'
+  			},
   			success: {
   				DEFAULT: 'hsl(var(--success))',
   				foreground: 'hsl(var(--success-foreground))'
@@ -93,7 +64,10 @@ export default {
   			warning: {
   				DEFAULT: 'hsl(var(--warning))',
   				foreground: 'hsl(var(--warning-foreground))'
-  			}
+  			},
+  			'kasi-gold': 'hsl(var(--kasi-gold))',
+  			'kasi-red': 'hsl(var(--kasi-red))',
+  			'kasi-green': 'hsl(var(--kasi-green))',
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
@@ -105,48 +79,24 @@ export default {
   		},
   		keyframes: {
   			'accordion-down': {
-  				from: {
-  					height: '0'
-  				},
-  				to: {
-  					height: 'var(--radix-accordion-content-height)'
-  				}
+  				from: { height: '0' },
+  				to: { height: 'var(--radix-accordion-content-height)' }
   			},
   			'accordion-up': {
-  				from: {
-  					height: 'var(--radix-accordion-content-height)'
-  				},
-  				to: {
-  					height: '0'
-  				}
+  				from: { height: 'var(--radix-accordion-content-height)' },
+  				to: { height: '0' }
   			},
   			float: {
-  				'0%, 100%': {
-  					transform: 'translateY(0px)'
-  				},
-  				'50%': {
-  					transform: 'translateY(-16px)'
-  				}
+  				'0%, 100%': { transform: 'translateY(0px)' },
+  				'50%': { transform: 'translateY(-16px)' }
   			},
   			'slide-up': {
-  				from: {
-  					opacity: '0',
-  					transform: 'translateY(24px)'
-  				},
-  				to: {
-  					opacity: '1',
-  					transform: 'translateY(0)'
-  				}
+  				from: { opacity: '0', transform: 'translateY(24px)' },
+  				to: { opacity: '1', transform: 'translateY(0)' }
   			},
   			'pulse-live': {
-  				'0%, 100%': {
-  					transform: 'scale(1)',
-  					opacity: '1'
-  				},
-  				'50%': {
-  					transform: 'scale(2)',
-  					opacity: '0'
-  				}
+  				'0%, 100%': { transform: 'scale(1)', opacity: '1' },
+  				'50%': { transform: 'scale(2)', opacity: '0' }
   			}
   		},
   		animation: {
@@ -157,17 +107,10 @@ export default {
   			'pulse-live': 'pulse-live 2s ease-in-out infinite'
   		},
   		boxShadow: {
-  			glow: '0 0 40px hsl(158 64% 52% / 0.15)',
-  			'glow-lg': '0 0 60px hsl(158 64% 52% / 0.25)',
+  			glow: '0 0 40px hsl(45 100% 50% / 0.15)',
+  			'glow-lg': '0 0 60px hsl(45 100% 50% / 0.25)',
   			card: '0 4px 24px -4px rgba(0, 0, 0, 0.3)',
-  			elevated: '0 8px 40px -8px rgba(0, 0, 0, 0.4)',
-  			'2xs': 'var(--shadow-2xs)',
-  			xs: 'var(--shadow-xs)',
-  			sm: 'var(--shadow-sm)',
-  			md: 'var(--shadow-md)',
-  			lg: 'var(--shadow-lg)',
-  			xl: 'var(--shadow-xl)',
-  			'2xl': 'var(--shadow-2xl)'
+  			elevated: '0 8px 40px -8px rgba(0, 0, 0, 0.4)'
   		}
   	}
   },
