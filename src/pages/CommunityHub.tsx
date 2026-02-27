@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Users, Trophy, MessageCircle, Camera, ThumbsUp, TrendingUp, Flame } from "lucide-react";
@@ -22,9 +21,7 @@ const CommunityHub = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      
-      <section className="pt-24 pb-16 px-4">
+      <section className="pt-8 pb-16 px-4">
         <div className="container mx-auto">
           {/* Hero */}
           <div className="text-center mb-16">

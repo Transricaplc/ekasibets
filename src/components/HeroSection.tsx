@@ -49,7 +49,7 @@ const HeroSection = () => {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + stadiums.length) % stadiums.length);
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden pattern-overlay">
+    <section className="relative min-h-[85vh] flex items-center overflow-hidden pattern-overlay">
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img src={heroBg} alt="Township football" className="w-full h-full object-cover opacity-15" />

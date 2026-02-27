@@ -1,20 +1,33 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
+import djMaphorisa from "@/assets/ambassadors/dj-maphorisa.jpg";
+import masterKg from "@/assets/ambassadors/master-kg.jpg";
+import kabzaDeSmall from "@/assets/ambassadors/kabza-de-small.jpg";
+import djTira from "@/assets/ambassadors/dj-tira.jpg";
+import mawhoo from "@/assets/ambassadors/mawhoo.jpg";
+import sjava from "@/assets/ambassadors/sjava.jpg";
+import samDeep from "@/assets/ambassadors/sam-deep.jpg";
+import scottMaphuma from "@/assets/ambassadors/scott-maphuma.jpg";
+import tylerIcu from "@/assets/ambassadors/tyler-icu.jpg";
+import xduppy from "@/assets/ambassadors/xduppy.jpg";
+import uncleWaffles from "@/assets/ambassadors/uncle-waffles.jpg";
+import mrThela from "@/assets/ambassadors/mr-thela.png";
+
 const ambassadors = [
-  { name: "DJ Maphorisa", role: "Amapiano King", tagline: "Bet on the beat!", emoji: "🎵", genre: "Amapiano" },
-  { name: "Master KG", role: "Jerusalema Hitmaker", tagline: "Dance your way to wins!", emoji: "💃", genre: "Afro-House" },
-  { name: "Kabza de Small", role: "Piano King", tagline: "Small bets, BIG wins!", emoji: "🎹", genre: "Amapiano" },
-  { name: "DJ Tira", role: "Durban's Finest", tagline: "Durban vibes, winning times!", emoji: "🔊", genre: "Gqom" },
-  { name: "MaWhoo", role: "Vocal Queen", tagline: "Sing your victory song!", emoji: "🎤", genre: "Amapiano" },
-  { name: "Sjava", role: "Mzansi Storyteller", tagline: "Every bet tells a story!", emoji: "📖", genre: "Afro-Soul" },
-  { name: "Tyler ICU", role: "Beat Architect", tagline: "Build your winning streak!", emoji: "🏗️", genre: "Amapiano" },
-  { name: "Uncle Waffles", role: "Dance Floor Boss", tagline: "Waffle Bets — sweet wins!", emoji: "🧇", genre: "Amapiano" },
-  { name: "Mr Thela", role: "Gqom Pioneer", tagline: "Heavy beats, heavy wins!", emoji: "🥁", genre: "Gqom" },
-  { name: "Xduppy", role: "Rising Star", tagline: "Level up your bets!", emoji: "⭐", genre: "Amapiano" },
-  { name: "Samthing Soweto", role: "Soweto's Voice", tagline: "Soweto spirit, global wins!", emoji: "🌍", genre: "Afro-Soul" },
-  { name: "Scorpion Kings", role: "The Duo", tagline: "Double the fun, double the wins!", emoji: "👑", genre: "Amapiano" },
+  { name: "DJ Maphorisa", role: "Amapiano King", tagline: "Bet on the beat!", img: djMaphorisa, genre: "Amapiano" },
+  { name: "Master KG", role: "Jerusalema Hitmaker", tagline: "Dance your way to wins!", img: masterKg, genre: "Afro-House" },
+  { name: "Kabza de Small", role: "Piano King", tagline: "Small bets, BIG wins!", img: kabzaDeSmall, genre: "Amapiano" },
+  { name: "DJ Tira", role: "Durban's Finest", tagline: "Durban vibes, winning times!", img: djTira, genre: "Gqom" },
+  { name: "MaWhoo", role: "Vocal Queen", tagline: "Sing your victory song!", img: mawhoo, genre: "Amapiano" },
+  { name: "Sjava", role: "Mzansi Storyteller", tagline: "Every bet tells a story!", img: sjava, genre: "Afro-Soul" },
+  { name: "Sam Deep", role: "Deep House Maestro", tagline: "Go deep, win big!", img: samDeep, genre: "Amapiano" },
+  { name: "Scott Maphuma", role: "The Entertainer", tagline: "Entertain your wallet!", img: scottMaphuma, genre: "Hip-Hop" },
+  { name: "Tyler ICU", role: "Beat Architect", tagline: "Build your winning streak!", img: tylerIcu, genre: "Amapiano" },
+  { name: "Xduppy", role: "Rising Star", tagline: "Level up your bets!", img: xduppy, genre: "Amapiano" },
+  { name: "Uncle Waffles", role: "Dance Floor Boss", tagline: "Waffle Bets — sweet wins!", img: uncleWaffles, genre: "Amapiano" },
+  { name: "Mr Thela", role: "Gqom Pioneer", tagline: "Heavy beats, heavy wins!", img: mrThela, genre: "Gqom" },
 ];
 
 const Ambassadors = () => {
@@ -44,7 +57,6 @@ const Ambassadors = () => {
   return (
     <section className="section-padding bg-card/50 border-y border-border overflow-hidden">
       <div className="container mx-auto">
-        {/* Header */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 mb-4">
             <Star size={14} className="text-primary fill-primary" />
@@ -56,8 +68,7 @@ const Ambassadors = () => {
           <p className="text-muted-foreground max-w-lg mx-auto">{t("amb_subtitle")}</p>
         </div>
 
-        {/* Carousel */}
-        <div 
+        <div
           className="relative"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -71,16 +82,16 @@ const Ambassadors = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:px-12">
             {getVisibleAmbassadors().map((amb, i) => (
-              <div
-                key={`${amb.name}-${i}`}
-                className="ambassador-card group cursor-pointer"
-              >
-                {/* Avatar placeholder */}
-                <div className="aspect-[3/4] bg-gradient-to-br from-primary/20 via-card to-fire/10 flex items-center justify-center relative overflow-hidden">
-                  <span className="text-6xl">{amb.emoji}</span>
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-card to-transparent h-1/2" />
-                  <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-primary/20 border border-primary/30">
-                    <span className="text-[10px] font-bold text-primary uppercase">{amb.genre}</span>
+              <div key={`${amb.name}-${i}`} className="ambassador-card group cursor-pointer">
+                <div className="aspect-[3/4] relative overflow-hidden">
+                  <img
+                    src={amb.img}
+                    alt={amb.name}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+                  <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-primary/80 border border-primary/30">
+                    <span className="text-[10px] font-bold text-primary-foreground uppercase">{amb.genre}</span>
                   </div>
                 </div>
                 <div className="p-4">
@@ -92,7 +103,6 @@ const Ambassadors = () => {
             ))}
           </div>
 
-          {/* Dots */}
           <div className="flex justify-center gap-1.5 mt-6">
             {ambassadors.map((_, idx) => (
               <button
@@ -104,11 +114,8 @@ const Ambassadors = () => {
           </div>
         </div>
 
-        {/* CTA */}
         <div className="text-center mt-8">
-          <button className="btn-kasi text-sm py-3 px-6">
-            {t("amb_cta")}
-          </button>
+          <button className="btn-kasi text-sm py-3 px-6">{t("amb_cta")}</button>
         </div>
       </div>
     </section>
