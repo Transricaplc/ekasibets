@@ -14,6 +14,122 @@ export type Database = {
   }
   public: {
     Tables: {
+      bet_selections: {
+        Row: {
+          bet_id: string
+          created_at: string
+          id: string
+          market_id: string
+          match_id: string
+          odds_snapshot: number
+          result: string | null
+          selection_id: string
+        }
+        Insert: {
+          bet_id: string
+          created_at?: string
+          id?: string
+          market_id: string
+          match_id: string
+          odds_snapshot: number
+          result?: string | null
+          selection_id: string
+        }
+        Update: {
+          bet_id?: string
+          created_at?: string
+          id?: string
+          market_id?: string
+          match_id?: string
+          odds_snapshot?: number
+          result?: string | null
+          selection_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bet_selections_bet_id_fkey"
+            columns: ["bet_id"]
+            isOneToOne: false
+            referencedRelation: "bets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bet_selections_market_id_fkey"
+            columns: ["market_id"]
+            isOneToOne: false
+            referencedRelation: "markets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bet_selections_match_id_fkey"
+            columns: ["match_id"]
+            isOneToOne: false
+            referencedRelation: "matches"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bet_selections_selection_id_fkey"
+            columns: ["selection_id"]
+            isOneToOne: false
+            referencedRelation: "selections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      bets: {
+        Row: {
+          bonus_stake: number
+          created_at: string
+          id: string
+          payout: number | null
+          placed_at: string
+          potential_payout: number
+          reference: string
+          settled_at: string | null
+          stake: number
+          status: Database["public"]["Enums"]["bet_status"]
+          total_odds: number
+          type: Database["public"]["Enums"]["bet_type"]
+          updated_at: string
+          user_id: string
+          wallet_id: string
+        }
+        Insert: {
+          bonus_stake?: number
+          created_at?: string
+          id?: string
+          payout?: number | null
+          placed_at?: string
+          potential_payout: number
+          reference: string
+          settled_at?: string | null
+          stake: number
+          status?: Database["public"]["Enums"]["bet_status"]
+          total_odds: number
+          type: Database["public"]["Enums"]["bet_type"]
+          updated_at?: string
+          user_id: string
+          wallet_id: string
+        }
+        Update: {
+          bonus_stake?: number
+          created_at?: string
+          id?: string
+          payout?: number | null
+          placed_at?: string
+          potential_payout?: number
+          reference?: string
+          settled_at?: string | null
+          stake?: number
+          status?: Database["public"]["Enums"]["bet_status"]
+          total_odds?: number
+          type?: Database["public"]["Enums"]["bet_type"]
+          updated_at?: string
+          user_id?: string
+          wallet_id?: string
+        }
+        Relationships: []
+      }
       kyc_documents: {
         Row: {
           created_at: string
@@ -56,6 +172,138 @@ export type Database = {
         }
         Relationships: []
       }
+      leagues: {
+        Row: {
+          active: boolean
+          country: string | null
+          created_at: string
+          display_order: number
+          id: string
+          name: string
+          slug: string
+          sport_id: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          country?: string | null
+          created_at?: string
+          display_order?: number
+          id?: string
+          name: string
+          slug: string
+          sport_id: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          country?: string | null
+          created_at?: string
+          display_order?: number
+          id?: string
+          name?: string
+          slug?: string
+          sport_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "leagues_sport_id_fkey"
+            columns: ["sport_id"]
+            isOneToOne: false
+            referencedRelation: "sports"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      markets: {
+        Row: {
+          created_at: string
+          id: string
+          key: string
+          match_id: string
+          name: string
+          status: Database["public"]["Enums"]["market_status"]
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          key: string
+          match_id: string
+          name: string
+          status?: Database["public"]["Enums"]["market_status"]
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          key?: string
+          match_id?: string
+          name?: string
+          status?: Database["public"]["Enums"]["market_status"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "markets_match_id_fkey"
+            columns: ["match_id"]
+            isOneToOne: false
+            referencedRelation: "matches"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      matches: {
+        Row: {
+          away_score: number | null
+          away_team: string
+          created_at: string
+          home_score: number | null
+          home_team: string
+          id: string
+          league_id: string
+          region: string | null
+          start_time: string
+          status: Database["public"]["Enums"]["match_status"]
+          updated_at: string
+        }
+        Insert: {
+          away_score?: number | null
+          away_team: string
+          created_at?: string
+          home_score?: number | null
+          home_team: string
+          id?: string
+          league_id: string
+          region?: string | null
+          start_time: string
+          status?: Database["public"]["Enums"]["match_status"]
+          updated_at?: string
+        }
+        Update: {
+          away_score?: number | null
+          away_team?: string
+          created_at?: string
+          home_score?: number | null
+          home_team?: string
+          id?: string
+          league_id?: string
+          region?: string | null
+          start_time?: string
+          status?: Database["public"]["Enums"]["match_status"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "matches_league_id_fkey"
+            columns: ["league_id"]
+            isOneToOne: false
+            referencedRelation: "leagues"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           account_status: Database["public"]["Enums"]["account_status"]
@@ -91,6 +339,80 @@ export type Database = {
           kyc_status?: Database["public"]["Enums"]["kyc_status"]
           last_name?: string
           phone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      selections: {
+        Row: {
+          created_at: string
+          display_order: number
+          id: string
+          label: string
+          market_id: string
+          odds: number
+          updated_at: string
+          won: boolean | null
+        }
+        Insert: {
+          created_at?: string
+          display_order?: number
+          id?: string
+          label: string
+          market_id: string
+          odds: number
+          updated_at?: string
+          won?: boolean | null
+        }
+        Update: {
+          created_at?: string
+          display_order?: number
+          id?: string
+          label?: string
+          market_id?: string
+          odds?: number
+          updated_at?: string
+          won?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "selections_market_id_fkey"
+            columns: ["market_id"]
+            isOneToOne: false
+            referencedRelation: "markets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sports: {
+        Row: {
+          active: boolean
+          created_at: string
+          display_order: number
+          icon: string | null
+          id: string
+          name: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          display_order?: number
+          icon?: string | null
+          id?: string
+          name: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          display_order?: number
+          icon?: string | null
+          id?: string
+          name?: string
+          slug?: string
           updated_at?: string
         }
         Relationships: []
@@ -256,16 +578,33 @@ export type Database = {
         }
         Returns: boolean
       }
+      place_bet: {
+        Args: {
+          _bet_type?: Database["public"]["Enums"]["bet_type"]
+          _selection_ids: string[]
+          _stake: number
+        }
+        Returns: Json
+      }
     }
     Enums: {
       account_status: "active" | "suspended" | "self_excluded" | "closed"
       app_role: "admin" | "operator" | "user"
+      bet_status: "pending" | "won" | "lost" | "void" | "cashed_out"
+      bet_type: "single" | "multiple"
       document_type:
         | "id_document"
         | "proof_of_residence"
         | "bank_statement"
         | "selfie"
       kyc_status: "pending" | "submitted" | "verified" | "rejected"
+      market_status: "open" | "suspended" | "closed" | "settled" | "cancelled"
+      match_status:
+        | "scheduled"
+        | "live"
+        | "finished"
+        | "postponed"
+        | "cancelled"
       transaction_status:
         | "pending"
         | "processing"
@@ -281,6 +620,7 @@ export type Database = {
         | "bet_refund"
         | "bonus_credit"
         | "bonus_debit"
+        | "bet_void"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -410,6 +750,8 @@ export const Constants = {
     Enums: {
       account_status: ["active", "suspended", "self_excluded", "closed"],
       app_role: ["admin", "operator", "user"],
+      bet_status: ["pending", "won", "lost", "void", "cashed_out"],
+      bet_type: ["single", "multiple"],
       document_type: [
         "id_document",
         "proof_of_residence",
@@ -417,6 +759,8 @@ export const Constants = {
         "selfie",
       ],
       kyc_status: ["pending", "submitted", "verified", "rejected"],
+      market_status: ["open", "suspended", "closed", "settled", "cancelled"],
+      match_status: ["scheduled", "live", "finished", "postponed", "cancelled"],
       transaction_status: [
         "pending",
         "processing",
@@ -433,6 +777,7 @@ export const Constants = {
         "bet_refund",
         "bonus_credit",
         "bonus_debit",
+        "bet_void",
       ],
     },
   },
