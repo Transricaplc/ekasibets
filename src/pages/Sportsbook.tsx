@@ -36,7 +36,8 @@ const Sportsbook = () => {
   const [activeSport, setActiveSport] = useState<string>("soccer");
   const [matches, setMatches] = useState<MatchRow[]>([]);
   const [loading, setLoading] = useState(true);
-  const { toggle, has, items, setOpen } = useBetSlip();
+  const { toggle, has, items, setOpen, updateOdds } = useBetSlip();
+  const [pulses, setPulses] = useState<Record<string, "up" | "down">>({});
 
   useEffect(() => {
     (async () => {
@@ -80,6 +81,50 @@ const Sportsbook = () => {
       setLoading(false);
     })();
   }, [activeSport]);
+
+  // Realtime: live odds updates
+  useEffect(() => {
+    const channel = supabase
+      .channel("live-odds")
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "selections" },
+        (payload) => {
+          const newRow = payload.new as { id: string; odds: number };
+          const oldRow = payload.old as { odds?: number };
+          const newOdds = Number(newRow.odds);
+          const direction: "up" | "down" | null =
+            oldRow?.odds != null
+              ? newOdds > Number(oldRow.odds) ? "up" : newOdds < Number(oldRow.odds) ? "down" : null
+              : null;
+
+          setMatches((prev) =>
+            prev.map((m) => ({
+              ...m,
+              markets: m.markets.map((mk) => ({
+                ...mk,
+                selections: mk.selections.map((s) =>
+                  s.id === newRow.id ? { ...s, odds: newOdds } : s
+                ),
+              })),
+            }))
+          );
+          updateOdds(newRow.id, newOdds);
+
+          if (direction) {
+            setPulses((p) => ({ ...p, [newRow.id]: direction }));
+            setTimeout(() => {
+              setPulses((p) => {
+                const { [newRow.id]: _, ...rest } = p;
+                return rest;
+              });
+            }, 1500);
+          }
+        }
+      )
+      .subscribe();
+    return () => { supabase.removeChannel(channel); };
+  }, [updateOdds]);
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -135,30 +180,33 @@ const Sportsbook = () => {
                   </div>
                   {market ? (
                     <div className="flex gap-2">
-                      {market.selections.map((s) => (
-                        <button
-                          key={s.id}
-                          onClick={() =>
-                            toggle({
-                              selectionId: s.id,
-                              matchId: m.id,
-                              marketId: market.id,
-                              matchLabel: `${m.home_team} vs ${m.away_team}`,
-                              marketName: market.name,
-                              selectionLabel: s.label,
-                              odds: Number(s.odds),
-                            })
-                          }
-                          className={`min-w-[72px] px-3 py-2 rounded-lg text-sm font-bold transition-all border ${
-                            has(s.id)
-                              ? "bg-primary text-primary-foreground border-primary"
-                              : "bg-muted/60 text-foreground border-border hover:border-primary/50 hover:bg-primary/10"
-                          }`}
-                        >
-                          <div className="text-[10px] uppercase opacity-70">{s.label}</div>
-                          <div>{Number(s.odds).toFixed(2)}</div>
-                        </button>
-                      ))}
+                      {market.selections.map((s) => {
+                        const pulse = pulses[s.id];
+                        return (
+                          <button
+                            key={s.id}
+                            onClick={() =>
+                              toggle({
+                                selectionId: s.id,
+                                matchId: m.id,
+                                marketId: market.id,
+                                matchLabel: `${m.home_team} vs ${m.away_team}`,
+                                marketName: market.name,
+                                selectionLabel: s.label,
+                                odds: Number(s.odds),
+                              })
+                            }
+                            className={`min-w-[72px] px-3 py-2 rounded-lg text-sm font-bold transition-all border ${
+                              has(s.id)
+                                ? "bg-primary text-primary-foreground border-primary"
+                                : "bg-muted/60 text-foreground border-border hover:border-primary/50 hover:bg-primary/10"
+                            } ${pulse === "up" ? "ring-2 ring-success animate-pulse" : ""} ${pulse === "down" ? "ring-2 ring-destructive animate-pulse" : ""}`}
+                          >
+                            <div className="text-[10px] uppercase opacity-70">{s.label}</div>
+                            <div>{Number(s.odds).toFixed(2)}</div>
+                          </button>
+                        );
+                      })}
                     </div>
                   ) : (
                     <span className="text-xs text-muted-foreground">No markets</span>
