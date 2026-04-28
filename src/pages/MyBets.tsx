@@ -125,12 +125,23 @@ const MyBets = () => {
                     <p className="font-bold text-primary">{Number(b.total_odds).toFixed(2)}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-muted-foreground">{b.status === "won" ? "Payout" : "Potential"}</p>
+                    <p className="text-xs text-muted-foreground">{b.status === "won" ? "Payout" : b.status === "cashed_out" ? "Cashed Out" : "Potential"}</p>
                     <p className="font-bold gradient-text-gold">
                       {fmt(Number(b.payout ?? b.potential_payout))}
                     </p>
                   </div>
                 </div>
+
+                {b.status === "pending" && (
+                  <button
+                    onClick={() => cashOut(b.id)}
+                    disabled={cashingOut === b.id}
+                    className="mt-3 w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg border border-primary/40 text-primary hover:bg-primary/10 text-sm font-bold uppercase tracking-wide transition-colors"
+                  >
+                    {cashingOut === b.id ? <Loader2 className="animate-spin" size={14} /> : <Banknote size={14} />}
+                    Cash Out Now
+                  </button>
+                )}
               </div>
             );
           })}
