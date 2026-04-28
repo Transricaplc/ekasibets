@@ -586,6 +586,21 @@ export type Database = {
         }
         Returns: Json
       }
+      set_user_limits: {
+        Args: {
+          _daily_bet?: number
+          _daily_deposit?: number
+          _monthly_deposit?: number
+          _self_exclude_days?: number
+          _session_minutes?: number
+          _weekly_deposit?: number
+        }
+        Returns: Json
+      }
+      settle_match: {
+        Args: { _match_id: string; _winning_selection_ids: string[] }
+        Returns: Json
+      }
     }
     Enums: {
       account_status: "active" | "suspended" | "self_excluded" | "closed"
