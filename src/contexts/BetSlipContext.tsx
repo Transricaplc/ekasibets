@@ -18,6 +18,7 @@ interface BetSlipCtx {
   remove: (selectionId: string) => void;
   clear: () => void;
   has: (selectionId: string) => boolean;
+  updateOdds: (selectionId: string, odds: number) => void;
   totalOdds: number;
 }
 
@@ -44,6 +45,9 @@ export const BetSlipProvider = ({ children }: { children: ReactNode }) => {
 
   const clear = useCallback(() => setItems([]), []);
   const has = useCallback((selectionId: string) => items.some((i) => i.selectionId === selectionId), [items]);
+  const updateOdds = useCallback((selectionId: string, odds: number) => {
+    setItems((prev) => prev.map((i) => (i.selectionId === selectionId ? { ...i, odds } : i)));
+  }, []);
 
   const totalOdds = useMemo(
     () => Number(items.reduce((acc, i) => acc * i.odds, 1).toFixed(2)),
@@ -51,7 +55,7 @@ export const BetSlipProvider = ({ children }: { children: ReactNode }) => {
   );
 
   return (
-    <Ctx.Provider value={{ items, open, setOpen, toggle, remove, clear, has, totalOdds }}>
+    <Ctx.Provider value={{ items, open, setOpen, toggle, remove, clear, has, updateOdds, totalOdds }}>
       {children}
     </Ctx.Provider>
   );
