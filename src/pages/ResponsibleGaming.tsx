@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { AlertCircle, Clock, HeartHandshake, Shield, Phone, BookOpen, BarChart3, Target } from "lucide-react";
+import ResponsibleLimitsForm from "@/components/ResponsibleLimitsForm";
 
 const tools = [
   { icon: Target, title: "Deposit Limits", desc: "Set daily, weekly, or monthly limits on how much you can deposit. Stay in control of your spending." },
@@ -31,6 +32,11 @@ const ResponsibleGamingPage = () => {
             </div>
             <h1 className="font-display text-4xl md:text-6xl text-foreground mb-4">{t("resp_title")}</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t("resp_subtitle")}</p>
+          </div>
+
+          {/* Live limits manager */}
+          <div className="mb-12">
+            <ResponsibleLimitsForm />
           </div>
 
           {/* Tools */}

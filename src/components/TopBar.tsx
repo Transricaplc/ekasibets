@@ -1,7 +1,8 @@
-import { Menu, Zap, Radio, LogOut, User as UserIcon, LayoutDashboard } from "lucide-react";
+import { Menu, Zap, Radio, LogOut, User as UserIcon, LayoutDashboard, ShieldCheck } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useAuth } from "@/contexts/AuthContext";
+import { useIsAdmin } from "@/hooks/useIsAdmin";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,6 +14,7 @@ import {
 const TopBar = ({ onMenuToggle }: { onMenuToggle: () => void }) => {
   const { t } = useLanguage();
   const { user, signOut } = useAuth();
+  const { isAdmin } = useIsAdmin();
   const navigate = useNavigate();
 
   const handleSignOut = async () => {
@@ -65,6 +67,13 @@ const TopBar = ({ onMenuToggle }: { onMenuToggle: () => void }) => {
                 <UserIcon size={14} className="mr-2" /> Wallet
               </Link>
             </DropdownMenuItem>
+            {isAdmin && (
+              <DropdownMenuItem asChild>
+                <Link to="/admin" className="cursor-pointer">
+                  <ShieldCheck size={14} className="mr-2" /> Admin Panel
+                </Link>
+              </DropdownMenuItem>
+            )}
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-destructive">
               <LogOut size={14} className="mr-2" /> Sign Out
