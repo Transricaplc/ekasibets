@@ -131,7 +131,7 @@ const AdminPage = () => {
                   <p className="text-xs uppercase text-muted-foreground mb-2 font-bold">{mk.name}</p>
                   <div className="space-y-1">
                     {mk.selections.map((s) => (
-                      <label key={s.id} className="flex items-center gap-2 p-2 rounded-lg border border-border hover:border-primary/50 cursor-pointer">
+                      <div key={s.id} className="flex items-center gap-2 p-2 rounded-lg border border-border">
                         <input
                           type="radio"
                           name={mk.id}
@@ -139,8 +139,21 @@ const AdminPage = () => {
                           onChange={() => setWinners({ ...winners, [mk.id]: s.id })}
                         />
                         <span className="text-sm flex-1">{s.label}</span>
-                        <span className="text-xs text-muted-foreground">@ {Number(s.odds).toFixed(2)}</span>
-                      </label>
+                        <input
+                          type="number"
+                          step="0.01"
+                          min="1.01"
+                          defaultValue={Number(s.odds).toFixed(2)}
+                          onBlur={async (e) => {
+                            const v = Number(e.target.value);
+                            if (!v || v < 1.01) return;
+                            const { error } = await supabase.from("selections").update({ odds: v }).eq("id", s.id);
+                            if (error) toast.error(error.message);
+                            else toast.success(`Odds updated to ${v.toFixed(2)}`);
+                          }}
+                          className="w-20 px-2 py-1 text-xs bg-muted border border-border rounded text-right focus:outline-none focus:border-primary"
+                        />
+                      </div>
                     ))}
                     <button
                       onClick={() => { const w = { ...winners }; delete w[mk.id]; setWinners(w); }}
