@@ -39,28 +39,40 @@ const MyBets = () => {
   const { user } = useAuth();
   const [bets, setBets] = useState<BetRow[]>([]);
   const [loading, setLoading] = useState(true);
+  const [cashingOut, setCashingOut] = useState<string | null>(null);
 
-  useEffect(() => {
+  const load = async () => {
     if (!user) return;
-    (async () => {
-      const { data } = await supabase
-        .from("bets")
-        .select(`
-          id, reference, type, stake, total_odds, potential_payout, payout, status, placed_at,
-          bet_selections(
-            odds_snapshot, result,
-            selection:selections(label),
-            market:markets(name),
-            match:matches(home_team, away_team)
-          )
-        `)
-        .eq("user_id", user.id)
-        .order("placed_at", { ascending: false })
-        .limit(50);
-      setBets((data as any) ?? []);
-      setLoading(false);
-    })();
-  }, [user]);
+    const { data } = await supabase
+      .from("bets")
+      .select(`
+        id, reference, type, stake, total_odds, potential_payout, payout, status, placed_at,
+        bet_selections(
+          odds_snapshot, result,
+          selection:selections(label),
+          market:markets(name),
+          match:matches(home_team, away_team)
+        )
+      `)
+      .eq("user_id", user.id)
+      .order("placed_at", { ascending: false })
+      .limit(50);
+    setBets((data as any) ?? []);
+    setLoading(false);
+  };
+
+  useEffect(() => { load(); }, [user]);
+
+  const cashOut = async (betId: string) => {
+    if (!confirm("Cash out this bet now? You'll receive the current value, not the full potential payout.")) return;
+    setCashingOut(betId);
+    const { data, error } = await supabase.rpc("cash_out_bet", { _bet_id: betId });
+    setCashingOut(null);
+    if (error) return toast.error(error.message);
+    const value = (data as any)?.cashout;
+    toast.success(`Cashed out R${Number(value).toFixed(2)}`);
+    load();
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
