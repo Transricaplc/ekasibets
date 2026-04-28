@@ -21,6 +21,7 @@ import Dashboard from "./pages/Dashboard";
 import KYC from "./pages/KYC";
 import Sportsbook from "./pages/Sportsbook";
 import MyBets from "./pages/MyBets";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -80,6 +81,14 @@ const App = () => (
                           element={
                             <ProtectedRoute>
                               <WalletPayments />
+                            </ProtectedRoute>
+                          }
+                        />
+                        <Route
+                          path="/admin"
+                          element={
+                            <ProtectedRoute>
+                              <Admin />
                             </ProtectedRoute>
                           }
                         />
