@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Users, Trophy, MessageCircle, Camera, ThumbsUp, TrendingUp, Flame } from "lucide-react";
 import { Link } from "react-router-dom";
+import LiveFeed from "@/components/LiveFeed";
 
 const communityPosts = [
   { user: "Thabo M.", location: "Soweto", content: "Just hit a 5-leg multi! R50 turned into R2,400 🔥🔥🔥 Chiefs for the win!", time: "2 min ago", likes: 45, emoji: "🏆" },
@@ -37,31 +38,7 @@ const CommunityHub = () => {
             {/* Main Feed */}
             <div className="lg:col-span-2 space-y-4">
               <h2 className="font-display text-2xl text-foreground mb-4">🔥 LIVE FEED</h2>
-              {communityPosts.map((post, i) => (
-                <div key={i} className="card-kasi p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-2xl flex-shrink-0">
-                      {post.emoji}
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="font-bold text-foreground">{post.user}</span>
-                        <span className="text-xs text-muted-foreground">• {post.location}</span>
-                        <span className="text-xs text-muted-foreground ml-auto">{post.time}</span>
-                      </div>
-                      <p className="text-foreground mb-3">{post.content}</p>
-                      <div className="flex items-center gap-4">
-                        <button className="flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors text-sm">
-                          <ThumbsUp size={14} /> {post.likes}
-                        </button>
-                        <button className="flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors text-sm">
-                          <MessageCircle size={14} /> Reply
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+              <LiveFeed />
 
               {/* Community Bet Creation */}
               <div className="card-kasi p-6 border-kasi-gold/30">
