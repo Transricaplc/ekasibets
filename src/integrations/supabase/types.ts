@@ -343,6 +343,80 @@ export type Database = {
         }
         Relationships: []
       }
+      promo_codes: {
+        Row: {
+          active: boolean
+          bonus_amount: number
+          code: string
+          created_at: string
+          description: string
+          expires_at: string | null
+          id: string
+          max_redemptions: number | null
+          min_deposit: number
+          total_redemptions: number
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          bonus_amount: number
+          code: string
+          created_at?: string
+          description: string
+          expires_at?: string | null
+          id?: string
+          max_redemptions?: number | null
+          min_deposit?: number
+          total_redemptions?: number
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          bonus_amount?: number
+          code?: string
+          created_at?: string
+          description?: string
+          expires_at?: string | null
+          id?: string
+          max_redemptions?: number | null
+          min_deposit?: number
+          total_redemptions?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      promo_redemptions: {
+        Row: {
+          bonus_credited: number
+          id: string
+          promo_code_id: string
+          redeemed_at: string
+          user_id: string
+        }
+        Insert: {
+          bonus_credited: number
+          id?: string
+          promo_code_id: string
+          redeemed_at?: string
+          user_id: string
+        }
+        Update: {
+          bonus_credited?: number
+          id?: string
+          promo_code_id?: string
+          redeemed_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "promo_redemptions_promo_code_id_fkey"
+            columns: ["promo_code_id"]
+            isOneToOne: false
+            referencedRelation: "promo_codes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       selections: {
         Row: {
           created_at: string
@@ -587,6 +661,7 @@ export type Database = {
         }
         Returns: Json
       }
+      redeem_promo_code: { Args: { _code: string }; Returns: Json }
       set_user_limits: {
         Args: {
           _daily_bet?: number
