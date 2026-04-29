@@ -22,6 +22,7 @@ import KYC from "./pages/KYC";
 import Sportsbook from "./pages/Sportsbook";
 import MyBets from "./pages/MyBets";
 import Admin from "./pages/Admin";
+import Promotions from "./pages/Promotions";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -48,6 +49,7 @@ const App = () => (
                         <Route path="/" element={<Index />} />
                         <Route path="/live" element={<LiveBetting />} />
                         <Route path="/sportsbook" element={<Sportsbook />} />
+                        <Route path="/promotions" element={<Promotions />} />
                         <Route path="/community" element={<CommunityHub />} />
                         <Route path="/events" element={<EventsToursPage />} />
                         <Route path="/responsible-gaming" element={<ResponsibleGaming />} />
