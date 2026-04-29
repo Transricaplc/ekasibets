@@ -4,7 +4,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { Language } from "@/i18n/translations";
 import {
   Home, Trophy, Users, Wallet, Calendar, Shield, Info,
-  Search, Zap, Radio, ChevronDown, Globe, X, Flame,
+  Search, Zap, Radio, ChevronDown, Globe, X, Flame, Gift,
   Gamepad2, Dribbble, Swords, Timer, BarChart3, TrendingUp
 } from "lucide-react";
 import {
@@ -47,6 +47,7 @@ const AppSidebar = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 
   const bottomLinks = [
     { label: t("nav_community"), href: "/community", icon: Users },
+    { label: "Promotions", href: "/promotions", icon: Gift, badge: "Bonus" },
     { label: t("nav_wallet"), href: "/wallet", icon: Wallet },
     { label: t("nav_events"), href: "/events", icon: Calendar, badge: "New" },
     { label: t("nav_responsible"), href: "/responsible-gaming", icon: Shield },
