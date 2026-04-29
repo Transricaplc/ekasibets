@@ -5,6 +5,7 @@ import { useIsAdmin } from "@/hooks/useIsAdmin";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
 import { Loader2, Trophy, ShieldCheck } from "lucide-react";
+import AdminPromoManager from "@/components/AdminPromoManager";
 
 interface MatchRow {
   id: string;
@@ -172,6 +173,10 @@ const AdminPage = () => {
             </div>
           )}
         </div>
+      </div>
+
+      <div className="mt-6">
+        <AdminPromoManager />
       </div>
     </div>
   );
