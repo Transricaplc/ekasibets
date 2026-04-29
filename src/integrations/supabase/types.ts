@@ -646,6 +646,16 @@ export type Database = {
     }
     Functions: {
       cash_out_bet: { Args: { _bet_id: string }; Returns: Json }
+      get_leaderboard: {
+        Args: { _limit?: number; _metric?: string; _period?: string }
+        Returns: {
+          bets_count: number
+          display_name: string
+          rank: number
+          user_id: string
+          value: number
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
