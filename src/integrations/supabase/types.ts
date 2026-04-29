@@ -130,6 +130,41 @@ export type Database = {
         }
         Relationships: []
       }
+      community_posts: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          post_type: Database["public"]["Enums"]["post_type"]
+          shared_bet_id: string | null
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          post_type?: Database["public"]["Enums"]["post_type"]
+          shared_bet_id?: string | null
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          post_type?: Database["public"]["Enums"]["post_type"]
+          shared_bet_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "community_posts_shared_bet_id_fkey"
+            columns: ["shared_bet_id"]
+            isOneToOne: false
+            referencedRelation: "bets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       kyc_documents: {
         Row: {
           created_at: string
@@ -300,6 +335,38 @@ export type Database = {
             columns: ["league_id"]
             isOneToOne: false
             referencedRelation: "leagues"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      post_reactions: {
+        Row: {
+          created_at: string
+          id: string
+          post_id: string
+          reaction: Database["public"]["Enums"]["reaction_type"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          post_id: string
+          reaction: Database["public"]["Enums"]["reaction_type"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          post_id?: string
+          reaction?: Database["public"]["Enums"]["reaction_type"]
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "post_reactions_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "community_posts"
             referencedColumns: ["id"]
           },
         ]
@@ -656,6 +723,7 @@ export type Database = {
           value: number
         }[]
       }
+      get_post_author: { Args: { _user_id: string }; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -706,6 +774,8 @@ export type Database = {
         | "finished"
         | "postponed"
         | "cancelled"
+      post_type: "text" | "tip" | "bet_share"
+      reaction_type: "fire" | "laugh" | "clap" | "skull"
       transaction_status:
         | "pending"
         | "processing"
@@ -862,6 +932,8 @@ export const Constants = {
       kyc_status: ["pending", "submitted", "verified", "rejected"],
       market_status: ["open", "suspended", "closed", "settled", "cancelled"],
       match_status: ["scheduled", "live", "finished", "postponed", "cancelled"],
+      post_type: ["text", "tip", "bet_share"],
+      reaction_type: ["fire", "laugh", "clap", "skull"],
       transaction_status: [
         "pending",
         "processing",
