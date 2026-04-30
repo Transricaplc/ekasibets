@@ -24,6 +24,7 @@ import MyBets from "./pages/MyBets";
 import Admin from "./pages/Admin";
 import Promotions from "./pages/Promotions";
 import Leaderboards from "./pages/Leaderboards";
+import Rewards from "./pages/Rewards";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
