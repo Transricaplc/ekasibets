@@ -6,6 +6,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
 import { Loader2, Trophy, ShieldCheck } from "lucide-react";
 import AdminPromoManager from "@/components/AdminPromoManager";
+import AdminRewardsManager from "@/components/AdminRewardsManager";
 
 interface MatchRow {
   id: string;
