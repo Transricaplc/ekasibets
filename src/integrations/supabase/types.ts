@@ -14,6 +14,74 @@ export type Database = {
   }
   public: {
     Tables: {
+      artist_follows: {
+        Row: {
+          artist_id: string
+          created_at: string
+          user_id: string
+        }
+        Insert: {
+          artist_id: string
+          created_at?: string
+          user_id: string
+        }
+        Update: {
+          artist_id?: string
+          created_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "artist_follows_artist_id_fkey"
+            columns: ["artist_id"]
+            isOneToOne: false
+            referencedRelation: "artists"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      artists: {
+        Row: {
+          active: boolean
+          bio: string | null
+          created_at: string
+          genre: string
+          id: string
+          image_url: string | null
+          instagram_handle: string | null
+          name: string
+          spotify_url: string | null
+          tier: Database["public"]["Enums"]["ambassador_tier"]
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          bio?: string | null
+          created_at?: string
+          genre?: string
+          id?: string
+          image_url?: string | null
+          instagram_handle?: string | null
+          name: string
+          spotify_url?: string | null
+          tier?: Database["public"]["Enums"]["ambassador_tier"]
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          bio?: string | null
+          created_at?: string
+          genre?: string
+          id?: string
+          image_url?: string | null
+          instagram_handle?: string | null
+          name?: string
+          spotify_url?: string | null
+          tier?: Database["public"]["Enums"]["ambassador_tier"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
       bet_selections: {
         Row: {
           bet_id: string
@@ -164,6 +232,146 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      events: {
+        Row: {
+          artist_id: string | null
+          city: string
+          created_at: string
+          description: string | null
+          ekasibets_presence: boolean
+          event_date: string
+          id: string
+          image_url: string | null
+          promo_code: string | null
+          ticket_url: string | null
+          title: string
+          updated_at: string
+          venue: string
+        }
+        Insert: {
+          artist_id?: string | null
+          city: string
+          created_at?: string
+          description?: string | null
+          ekasibets_presence?: boolean
+          event_date: string
+          id?: string
+          image_url?: string | null
+          promo_code?: string | null
+          ticket_url?: string | null
+          title: string
+          updated_at?: string
+          venue: string
+        }
+        Update: {
+          artist_id?: string | null
+          city?: string
+          created_at?: string
+          description?: string | null
+          ekasibets_presence?: boolean
+          event_date?: string
+          id?: string
+          image_url?: string | null
+          promo_code?: string | null
+          ticket_url?: string | null
+          title?: string
+          updated_at?: string
+          venue?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "events_artist_id_fkey"
+            columns: ["artist_id"]
+            isOneToOne: false
+            referencedRelation: "artists"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      influencer_picks: {
+        Row: {
+          confidence: Database["public"]["Enums"]["pick_confidence"]
+          created_at: string
+          id: string
+          influencer_id: string
+          match_id: string | null
+          prediction: string
+          reasoning: string | null
+        }
+        Insert: {
+          confidence?: Database["public"]["Enums"]["pick_confidence"]
+          created_at?: string
+          id?: string
+          influencer_id: string
+          match_id?: string | null
+          prediction: string
+          reasoning?: string | null
+        }
+        Update: {
+          confidence?: Database["public"]["Enums"]["pick_confidence"]
+          created_at?: string
+          id?: string
+          influencer_id?: string
+          match_id?: string | null
+          prediction?: string
+          reasoning?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "influencer_picks_influencer_id_fkey"
+            columns: ["influencer_id"]
+            isOneToOne: false
+            referencedRelation: "influencers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "influencer_picks_match_id_fkey"
+            columns: ["match_id"]
+            isOneToOne: false
+            referencedRelation: "matches"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      influencers: {
+        Row: {
+          active: boolean
+          category: string
+          created_at: string
+          followers: number
+          handle: string
+          id: string
+          image_url: string | null
+          name: string
+          platform: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          category?: string
+          created_at?: string
+          followers?: number
+          handle: string
+          id?: string
+          image_url?: string | null
+          name: string
+          platform?: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          category?: string
+          created_at?: string
+          followers?: number
+          handle?: string
+          id?: string
+          image_url?: string | null
+          name?: string
+          platform?: string
+          updated_at?: string
+        }
+        Relationships: []
       }
       kyc_documents: {
         Row: {
@@ -338,6 +546,72 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      playlist_artists: {
+        Row: {
+          artist_id: string
+          playlist_id: string
+        }
+        Insert: {
+          artist_id: string
+          playlist_id: string
+        }
+        Update: {
+          artist_id?: string
+          playlist_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "playlist_artists_artist_id_fkey"
+            columns: ["artist_id"]
+            isOneToOne: false
+            referencedRelation: "artists"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "playlist_artists_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "playlists"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      playlists: {
+        Row: {
+          active: boolean
+          created_at: string
+          curated_by: string
+          description: string | null
+          id: string
+          image_url: string | null
+          mood: string | null
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          curated_by?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          mood?: string | null
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          curated_by?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          mood?: string | null
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
       }
       post_reactions: {
         Row: {
@@ -647,6 +921,47 @@ export type Database = {
         }
         Relationships: []
       }
+      tracks: {
+        Row: {
+          artist_name: string
+          audio_url: string
+          created_at: string
+          display_order: number
+          duration: number
+          id: string
+          playlist_id: string
+          title: string
+        }
+        Insert: {
+          artist_name: string
+          audio_url: string
+          created_at?: string
+          display_order?: number
+          duration?: number
+          id?: string
+          playlist_id: string
+          title: string
+        }
+        Update: {
+          artist_name?: string
+          audio_url?: string
+          created_at?: string
+          display_order?: number
+          duration?: number
+          id?: string
+          playlist_id?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tracks_playlist_id_fkey"
+            columns: ["playlist_id"]
+            isOneToOne: false
+            referencedRelation: "playlists"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       transactions: {
         Row: {
           amount: number
@@ -872,6 +1187,7 @@ export type Database = {
     }
     Enums: {
       account_status: "active" | "suspended" | "self_excluded" | "closed"
+      ambassador_tier: "platinum" | "gold" | "community" | "none"
       app_role: "admin" | "operator" | "user"
       bet_status: "pending" | "won" | "lost" | "void" | "cashed_out"
       bet_type: "single" | "multiple"
@@ -888,6 +1204,7 @@ export type Database = {
         | "finished"
         | "postponed"
         | "cancelled"
+      pick_confidence: "lock" | "solid" | "risky"
       post_type: "text" | "tip" | "bet_share"
       reaction_type: "fire" | "laugh" | "clap" | "skull"
       redemption_status: "pending" | "fulfilled" | "cancelled"
@@ -1036,6 +1353,7 @@ export const Constants = {
   public: {
     Enums: {
       account_status: ["active", "suspended", "self_excluded", "closed"],
+      ambassador_tier: ["platinum", "gold", "community", "none"],
       app_role: ["admin", "operator", "user"],
       bet_status: ["pending", "won", "lost", "void", "cashed_out"],
       bet_type: ["single", "multiple"],
@@ -1048,6 +1366,7 @@ export const Constants = {
       kyc_status: ["pending", "submitted", "verified", "rejected"],
       market_status: ["open", "suspended", "closed", "settled", "cancelled"],
       match_status: ["scheduled", "live", "finished", "postponed", "cancelled"],
+      pick_confidence: ["lock", "solid", "risky"],
       post_type: ["text", "tip", "bet_share"],
       reaction_type: ["fire", "laugh", "clap", "skull"],
       redemption_status: ["pending", "fulfilled", "cancelled"],

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AppSidebar from "@/components/AppSidebar";
 import TopBar from "@/components/TopBar";
+import MiniPlayer from "@/components/MiniPlayer";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -12,6 +13,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         <TopBar onMenuToggle={() => setSidebarOpen(true)} />
         <main className="flex-1 overflow-y-auto">{children}</main>
       </div>
+      <MiniPlayer />
     </div>
   );
 };
