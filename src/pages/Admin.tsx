@@ -6,6 +6,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
 import { Loader2, Trophy, ShieldCheck } from "lucide-react";
 import AdminPromoManager from "@/components/AdminPromoManager";
+import AdminRewardsManager from "@/components/AdminRewardsManager";
 
 interface MatchRow {
   id: string;
@@ -175,8 +176,9 @@ const AdminPage = () => {
         </div>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 grid lg:grid-cols-2 gap-6">
         <AdminPromoManager />
+        <AdminRewardsManager />
       </div>
     </div>
   );

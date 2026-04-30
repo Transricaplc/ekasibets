@@ -24,6 +24,7 @@ import MyBets from "./pages/MyBets";
 import Admin from "./pages/Admin";
 import Promotions from "./pages/Promotions";
 import Leaderboards from "./pages/Leaderboards";
+import Rewards from "./pages/Rewards";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -52,6 +53,7 @@ const App = () => (
                         <Route path="/sportsbook" element={<Sportsbook />} />
                         <Route path="/promotions" element={<Promotions />} />
                         <Route path="/leaderboards" element={<Leaderboards />} />
+                        <Route path="/rewards" element={<Rewards />} />
                         <Route path="/community" element={<CommunityHub />} />
                         <Route path="/events" element={<EventsToursPage />} />
                         <Route path="/responsible-gaming" element={<ResponsibleGaming />} />
