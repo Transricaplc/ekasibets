@@ -484,6 +484,95 @@ export type Database = {
           },
         ]
       }
+      reward_items: {
+        Row: {
+          active: boolean
+          category: Database["public"]["Enums"]["reward_category"]
+          created_at: string
+          description: string
+          id: string
+          image_emoji: string
+          name: string
+          points_cost: number
+          rand_value: number
+          stock: number | null
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          category: Database["public"]["Enums"]["reward_category"]
+          created_at?: string
+          description?: string
+          id?: string
+          image_emoji?: string
+          name: string
+          points_cost: number
+          rand_value?: number
+          stock?: number | null
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          category?: Database["public"]["Enums"]["reward_category"]
+          created_at?: string
+          description?: string
+          id?: string
+          image_emoji?: string
+          name?: string
+          points_cost?: number
+          rand_value?: number
+          stock?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      reward_redemptions: {
+        Row: {
+          created_at: string
+          delivery_notes: string | null
+          delivery_phone: string | null
+          fulfilled_at: string | null
+          id: string
+          points_spent: number
+          reward_item_id: string
+          status: Database["public"]["Enums"]["redemption_status"]
+          user_id: string
+          voucher_code: string | null
+        }
+        Insert: {
+          created_at?: string
+          delivery_notes?: string | null
+          delivery_phone?: string | null
+          fulfilled_at?: string | null
+          id?: string
+          points_spent: number
+          reward_item_id: string
+          status?: Database["public"]["Enums"]["redemption_status"]
+          user_id: string
+          voucher_code?: string | null
+        }
+        Update: {
+          created_at?: string
+          delivery_notes?: string | null
+          delivery_phone?: string | null
+          fulfilled_at?: string | null
+          id?: string
+          points_spent?: number
+          reward_item_id?: string
+          status?: Database["public"]["Enums"]["redemption_status"]
+          user_id?: string
+          voucher_code?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reward_redemptions_reward_item_id_fkey"
+            columns: ["reward_item_id"]
+            isOneToOne: false
+            referencedRelation: "reward_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       selections: {
         Row: {
           created_at: string
@@ -653,6 +742,27 @@ export type Database = {
         }
         Relationships: []
       }
+      user_points: {
+        Row: {
+          lifetime_earned: number
+          points: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          lifetime_earned?: number
+          points?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          lifetime_earned?: number
+          points?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -740,6 +850,10 @@ export type Database = {
         Returns: Json
       }
       redeem_promo_code: { Args: { _code: string }; Returns: Json }
+      redeem_reward: {
+        Args: { _item_id: string; _notes?: string; _phone?: string }
+        Returns: Json
+      }
       set_user_limits: {
         Args: {
           _daily_bet?: number
@@ -776,6 +890,8 @@ export type Database = {
         | "cancelled"
       post_type: "text" | "tip" | "bet_share"
       reaction_type: "fire" | "laugh" | "clap" | "skull"
+      redemption_status: "pending" | "fulfilled" | "cancelled"
+      reward_category: "airtime" | "voucher" | "braai" | "data" | "other"
       transaction_status:
         | "pending"
         | "processing"
@@ -934,6 +1050,8 @@ export const Constants = {
       match_status: ["scheduled", "live", "finished", "postponed", "cancelled"],
       post_type: ["text", "tip", "bet_share"],
       reaction_type: ["fire", "laugh", "clap", "skull"],
+      redemption_status: ["pending", "fulfilled", "cancelled"],
+      reward_category: ["airtime", "voucher", "braai", "data", "other"],
       transaction_status: [
         "pending",
         "processing",
