@@ -5,7 +5,7 @@ import { Language } from "@/i18n/translations";
 import {
   Home, Trophy, Users, Wallet, Calendar, Shield, Info,
   Search, Zap, Radio, ChevronDown, Globe, X, Flame, Gift, Crown,
-  Gamepad2, Dribbble, Swords, Timer, BarChart3, TrendingUp
+  Gamepad2, Dribbble, Swords, Timer, BarChart3, TrendingUp, Award
 } from "lucide-react";
 import {
   Accordion,
