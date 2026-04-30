@@ -5,7 +5,8 @@ import { Language } from "@/i18n/translations";
 import {
   Home, Trophy, Users, Wallet, Calendar, Shield, Info,
   Search, Zap, Radio, ChevronDown, Globe, X, Flame, Gift, Crown,
-  Gamepad2, Dribbble, Swords, Timer, BarChart3, TrendingUp, Award
+  Gamepad2, Dribbble, Swords, Timer, BarChart3, TrendingUp, Award,
+  Music2, Mic, Star
 } from "lucide-react";
 import {
   Accordion,
@@ -46,12 +47,15 @@ const AppSidebar = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
   ];
 
   const bottomLinks = [
+    { label: "Music", href: "/music", icon: Music2, badge: "🎵" },
+    { label: "Artists", href: "/artists", icon: Star },
+    { label: "Picks", href: "/picks", icon: Mic, badge: "Hot" },
     { label: t("nav_community"), href: "/community", icon: Users },
     { label: "Leaderboards", href: "/leaderboards", icon: Crown },
     { label: "Promotions", href: "/promotions", icon: Gift, badge: "Bonus" },
     { label: "Rewards", href: "/rewards", icon: Award, badge: "Earn" },
     { label: t("nav_wallet"), href: "/wallet", icon: Wallet },
-    { label: t("nav_events"), href: "/events", icon: Calendar, badge: "New" },
+    { label: "Events", href: "/events", icon: Calendar, badge: "Live" },
     { label: t("nav_responsible"), href: "/responsible-gaming", icon: Shield },
     { label: t("nav_about"), href: "/about", icon: Info },
   ];

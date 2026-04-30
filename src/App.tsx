@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { BetSlipProvider } from "@/contexts/BetSlipContext";
+import { MusicPlayerProvider } from "@/contexts/MusicPlayerContext";
 import MainLayout from "@/layouts/MainLayout";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import BetSlip from "@/components/BetSlip";
@@ -25,6 +26,10 @@ import Admin from "./pages/Admin";
 import Promotions from "./pages/Promotions";
 import Leaderboards from "./pages/Leaderboards";
 import Rewards from "./pages/Rewards";
+import Music from "./pages/Music";
+import Artists from "./pages/Artists";
+import InfluencerPicks from "./pages/InfluencerPicks";
+import Events from "./pages/Events";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +38,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
       <BetSlipProvider>
+        <MusicPlayerProvider>
         <LanguageProvider>
           <TooltipProvider>
             <Toaster />
@@ -54,8 +60,12 @@ const App = () => (
                         <Route path="/promotions" element={<Promotions />} />
                         <Route path="/leaderboards" element={<Leaderboards />} />
                         <Route path="/rewards" element={<Rewards />} />
+                        <Route path="/music" element={<Music />} />
+                        <Route path="/artists" element={<Artists />} />
+                        <Route path="/picks" element={<InfluencerPicks />} />
                         <Route path="/community" element={<CommunityHub />} />
-                        <Route path="/events" element={<EventsToursPage />} />
+                        <Route path="/events" element={<Events />} />
+                        <Route path="/events-legacy" element={<EventsToursPage />} />
                         <Route path="/responsible-gaming" element={<ResponsibleGaming />} />
                         <Route path="/about" element={<AboutUs />} />
                         <Route
@@ -108,6 +118,7 @@ const App = () => (
             </BrowserRouter>
           </TooltipProvider>
         </LanguageProvider>
+        </MusicPlayerProvider>
       </BetSlipProvider>
     </AuthProvider>
   </QueryClientProvider>
