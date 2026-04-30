@@ -176,8 +176,9 @@ const AdminPage = () => {
         </div>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 grid lg:grid-cols-2 gap-6">
         <AdminPromoManager />
+        <AdminRewardsManager />
       </div>
     </div>
   );
