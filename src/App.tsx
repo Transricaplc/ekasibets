@@ -53,6 +53,7 @@ const App = () => (
                         <Route path="/sportsbook" element={<Sportsbook />} />
                         <Route path="/promotions" element={<Promotions />} />
                         <Route path="/leaderboards" element={<Leaderboards />} />
+                        <Route path="/rewards" element={<Rewards />} />
                         <Route path="/community" element={<CommunityHub />} />
                         <Route path="/events" element={<EventsToursPage />} />
                         <Route path="/responsible-gaming" element={<ResponsibleGaming />} />
