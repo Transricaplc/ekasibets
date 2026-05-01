@@ -68,6 +68,16 @@ export default {
   			'kasi-gold': 'hsl(var(--kasi-gold))',
   			'kasi-red': 'hsl(var(--kasi-red))',
   			'kasi-green': 'hsl(var(--kasi-green))',
+  			'lime-strike': {
+  				DEFAULT: 'hsl(var(--lime-strike))',
+  				foreground: 'hsl(var(--lime-strike-foreground))'
+  			},
+  			sunset: {
+  				DEFAULT: 'hsl(var(--sunset))',
+  				foreground: 'hsl(var(--sunset-foreground))'
+  			},
+  			carbon: 'hsl(var(--carbon))',
+  			pitch: 'hsl(var(--pitch))',
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
