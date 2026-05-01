@@ -547,6 +547,42 @@ export type Database = {
           },
         ]
       }
+      notifications: {
+        Row: {
+          body: string | null
+          created_at: string
+          id: string
+          link: string | null
+          metadata: Json | null
+          read_at: string | null
+          title: string
+          type: Database["public"]["Enums"]["notification_type"]
+          user_id: string
+        }
+        Insert: {
+          body?: string | null
+          created_at?: string
+          id?: string
+          link?: string | null
+          metadata?: Json | null
+          read_at?: string | null
+          title: string
+          type: Database["public"]["Enums"]["notification_type"]
+          user_id: string
+        }
+        Update: {
+          body?: string | null
+          created_at?: string
+          id?: string
+          link?: string | null
+          metadata?: Json | null
+          read_at?: string | null
+          title?: string
+          type?: Database["public"]["Enums"]["notification_type"]
+          user_id?: string
+        }
+        Relationships: []
+      }
       playlist_artists: {
         Row: {
           artist_id: string
@@ -1137,6 +1173,15 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      broadcast_notification: {
+        Args: {
+          _body: string
+          _link?: string
+          _title: string
+          _type?: Database["public"]["Enums"]["notification_type"]
+        }
+        Returns: number
+      }
       cash_out_bet: { Args: { _bet_id: string }; Returns: Json }
       get_leaderboard: {
         Args: { _limit?: number; _metric?: string; _period?: string }
@@ -1156,6 +1201,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      mark_notifications_read: { Args: { _ids?: string[] }; Returns: number }
       place_bet: {
         Args: {
           _bet_type?: Database["public"]["Enums"]["bet_type"]
@@ -1204,6 +1250,12 @@ export type Database = {
         | "finished"
         | "postponed"
         | "cancelled"
+      notification_type:
+        | "bet_settled"
+        | "redemption"
+        | "promo"
+        | "system"
+        | "event"
       pick_confidence: "lock" | "solid" | "risky"
       post_type: "text" | "tip" | "bet_share"
       reaction_type: "fire" | "laugh" | "clap" | "skull"
@@ -1366,6 +1418,13 @@ export const Constants = {
       kyc_status: ["pending", "submitted", "verified", "rejected"],
       market_status: ["open", "suspended", "closed", "settled", "cancelled"],
       match_status: ["scheduled", "live", "finished", "postponed", "cancelled"],
+      notification_type: [
+        "bet_settled",
+        "redemption",
+        "promo",
+        "system",
+        "event",
+      ],
       pick_confidence: ["lock", "solid", "risky"],
       post_type: ["text", "tip", "bet_share"],
       reaction_type: ["fire", "laugh", "clap", "skull"],
