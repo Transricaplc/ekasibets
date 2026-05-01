@@ -132,9 +132,28 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Compliance / Licence block */}
+        <div className="rounded-xl border border-border bg-secondary/40 p-5 mb-6 text-xs text-muted-foreground space-y-2">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <span className="font-display text-base text-foreground">18+ ONLY</span>
+            <span>Operated by <strong className="text-foreground">Transrica PLC</strong></span>
+            <span>Licensed by the Western Cape Gambling &amp; Racing Board (Bookmaker Licence — pending issue)</span>
+          </div>
+          <p>
+            eKasibets offers sports and contingency betting only, in accordance with the National Gambling Act 7 of 2004.
+            No casino, slots, poker, or interactive gambling are offered. Winning is never guaranteed.
+          </p>
+          <p className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <span>Need help? National Responsible Gambling Programme:</span>
+            <a href="tel:0800006008" className="text-success font-bold hover:underline">📞 0800 006 008</a>
+            <Link to="/responsible-gaming" className="text-primary font-bold hover:underline">Self-exclusion &amp; deposit limits</Link>
+          </p>
+          <p className="opacity-70">POPIA &amp; FICA compliant. All amounts in ZAR. SAST timezone.</p>
+        </div>
+
         {/* Copyright */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-sm">© {currentYear} {t("footer_copyright")}</p>
+          <p className="text-muted-foreground text-sm">© {currentYear} {t("footer_copyright")} · Transrica PLC</p>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <span>🇿🇦</span>
             <span>{t("footer_made")}</span>
