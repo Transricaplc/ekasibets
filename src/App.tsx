@@ -30,6 +30,7 @@ import Music from "./pages/Music";
 import Artists from "./pages/Artists";
 import InfluencerPicks from "./pages/InfluencerPicks";
 import Events from "./pages/Events";
+import Notifications from "./pages/Notifications";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -65,6 +66,7 @@ const App = () => (
                         <Route path="/picks" element={<InfluencerPicks />} />
                         <Route path="/community" element={<CommunityHub />} />
                         <Route path="/events" element={<Events />} />
+                        <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
                         <Route path="/events-legacy" element={<EventsToursPage />} />
                         <Route path="/responsible-gaming" element={<ResponsibleGaming />} />
                         <Route path="/about" element={<AboutUs />} />
