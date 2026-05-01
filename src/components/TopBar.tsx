@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
+import NotificationBell from "@/components/NotificationBell";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -48,6 +49,8 @@ const TopBar = ({ onMenuToggle }: { onMenuToggle: () => void }) => {
         <Radio size={12} className="animate-pulse" />
         Live
       </Link>
+
+      <NotificationBell />
 
       {user ? (
         <DropdownMenu>

@@ -6,7 +6,7 @@ import {
   Home, Trophy, Users, Wallet, Calendar, Shield, Info,
   Search, Zap, Radio, ChevronDown, Globe, X, Flame, Gift, Crown,
   Gamepad2, Dribbble, Swords, Timer, BarChart3, TrendingUp, Award,
-  Music2, Mic, Star
+  Music2, Mic, Star, Bell
 } from "lucide-react";
 import {
   Accordion,
@@ -54,6 +54,7 @@ const AppSidebar = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
     { label: "Leaderboards", href: "/leaderboards", icon: Crown },
     { label: "Promotions", href: "/promotions", icon: Gift, badge: "Bonus" },
     { label: "Rewards", href: "/rewards", icon: Award, badge: "Earn" },
+    { label: "Notifications", href: "/notifications", icon: Bell },
     { label: t("nav_wallet"), href: "/wallet", icon: Wallet },
     { label: "Events", href: "/events", icon: Calendar, badge: "Live" },
     { label: t("nav_responsible"), href: "/responsible-gaming", icon: Shield },
