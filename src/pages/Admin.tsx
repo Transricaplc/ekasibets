@@ -8,6 +8,7 @@ import { Loader2, Trophy, ShieldCheck } from "lucide-react";
 import AdminPromoManager from "@/components/AdminPromoManager";
 import AdminRewardsManager from "@/components/AdminRewardsManager";
 import AdminBroadcast from "@/components/AdminBroadcast";
+import AdminMatchCentre from "@/components/AdminMatchCentre";
 
 interface MatchRow {
   id: string;
@@ -175,6 +176,10 @@ const AdminPage = () => {
             </div>
           )}
         </div>
+      </div>
+
+      <div className="mt-6">
+        <AdminMatchCentre />
       </div>
 
       <div className="mt-6 grid lg:grid-cols-2 gap-6">

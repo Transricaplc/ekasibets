@@ -12,6 +12,7 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import BetSlip from "@/components/BetSlip";
 import Index from "./pages/Index";
 import LiveBetting from "./pages/LiveBetting";
+import MatchCentre from "./pages/MatchCentre";
 import CommunityHub from "./pages/CommunityHub";
 import WalletPayments from "./pages/WalletPayments";
 import ResponsibleGaming from "./pages/ResponsibleGaming";
@@ -57,6 +58,7 @@ const App = () => (
                       <Routes>
                         <Route path="/" element={<Index />} />
                         <Route path="/live" element={<LiveBetting />} />
+                        <Route path="/match-centre" element={<MatchCentre />} />
                         <Route path="/sportsbook" element={<Sportsbook />} />
                         <Route path="/promotions" element={<Promotions />} />
                         <Route path="/leaderboards" element={<Leaderboards />} />

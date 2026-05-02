@@ -497,15 +497,59 @@ export type Database = {
           },
         ]
       }
+      match_events: {
+        Row: {
+          created_at: string
+          description: string | null
+          event_type: string
+          id: string
+          match_id: string
+          minute: number | null
+          player: string | null
+          team: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          event_type: string
+          id?: string
+          match_id: string
+          minute?: number | null
+          player?: string | null
+          team?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          event_type?: string
+          id?: string
+          match_id?: string
+          minute?: number | null
+          player?: string | null
+          team?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "match_events_match_id_fkey"
+            columns: ["match_id"]
+            isOneToOne: false
+            referencedRelation: "matches"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       matches: {
         Row: {
           away_score: number | null
           away_team: string
+          clock_minute: number | null
           created_at: string
           home_score: number | null
           home_team: string
           id: string
           league_id: string
+          live_updated_at: string | null
+          period: string | null
           region: string | null
           start_time: string
           status: Database["public"]["Enums"]["match_status"]
@@ -514,11 +558,14 @@ export type Database = {
         Insert: {
           away_score?: number | null
           away_team: string
+          clock_minute?: number | null
           created_at?: string
           home_score?: number | null
           home_team: string
           id?: string
           league_id: string
+          live_updated_at?: string | null
+          period?: string | null
           region?: string | null
           start_time: string
           status?: Database["public"]["Enums"]["match_status"]
@@ -527,11 +574,14 @@ export type Database = {
         Update: {
           away_score?: number | null
           away_team?: string
+          clock_minute?: number | null
           created_at?: string
           home_score?: number | null
           home_team?: string
           id?: string
           league_id?: string
+          live_updated_at?: string | null
+          period?: string | null
           region?: string | null
           start_time?: string
           status?: Database["public"]["Enums"]["match_status"]
@@ -1228,6 +1278,20 @@ export type Database = {
       }
       settle_match: {
         Args: { _match_id: string; _winning_selection_ids: string[] }
+        Returns: Json
+      }
+      update_live_score: {
+        Args: {
+          _away_score: number
+          _clock_minute?: number
+          _description?: string
+          _event_type?: string
+          _home_score: number
+          _match_id: string
+          _period?: string
+          _player?: string
+          _team?: string
+        }
         Returns: Json
       }
     }
