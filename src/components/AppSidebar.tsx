@@ -80,10 +80,10 @@ const AppSidebar = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
       >
         {/* Logo & Close */}
         <div className="flex items-center justify-between p-4 border-b border-sidebar-border">
-          <Link to="/" className="flex items-center gap-0.5" onClick={onClose}>
+          <Link to="/" className="flex items-baseline" onClick={onClose}>
             <span className="font-display text-2xl gradient-text">e</span>
-            <span className="font-display text-2xl text-sidebar-foreground">KASI</span>
-            <span className="font-display text-2xl gradient-text">BETS</span>
+            <span className="font-display text-2xl text-sidebar-foreground">Kasi</span>
+            <span className="font-display text-2xl gradient-text">Bets</span>
           </Link>
           <button onClick={onClose} className="lg:hidden p-1.5 rounded-lg hover:bg-sidebar-accent text-sidebar-foreground">
             <X size={20} />

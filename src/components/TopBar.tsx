@@ -34,10 +34,10 @@ const TopBar = ({ onMenuToggle }: { onMenuToggle: () => void }) => {
         <Menu size={22} />
       </button>
 
-      <Link to="/" className="lg:hidden flex items-center gap-0.5">
+      <Link to="/" className="lg:hidden flex items-baseline">
         <span className="font-display text-xl gradient-text">e</span>
-        <span className="font-display text-xl text-foreground">KASI</span>
-        <span className="font-display text-xl gradient-text">BETS</span>
+        <span className="font-display text-xl text-foreground">Kasi</span>
+        <span className="font-display text-xl gradient-text">Bets</span>
       </Link>
 
       <div className="flex-1" />

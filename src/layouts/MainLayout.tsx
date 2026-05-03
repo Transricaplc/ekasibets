@@ -6,6 +6,7 @@ import AgeGate from "@/components/AgeGate";
 import ResponsibleStrip from "@/components/ResponsibleStrip";
 import SessionReminder from "@/components/SessionReminder";
 import InstallPrompt from "@/components/InstallPrompt";
+import PreLaunchBanner from "@/components/PreLaunchBanner";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
