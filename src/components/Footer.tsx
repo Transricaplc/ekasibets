@@ -54,10 +54,10 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" className="flex items-center gap-1 mb-4">
+            <Link to="/" className="flex items-baseline mb-4">
               <span className="font-display text-xl gradient-text font-bold">e</span>
-              <span className="font-display text-xl text-foreground font-bold">KASI</span>
-              <span className="font-display text-xl gradient-text font-bold">BETS</span>
+              <span className="font-display text-xl text-foreground font-bold">Kasi</span>
+              <span className="font-display text-xl gradient-text font-bold">Bets</span>
             </Link>
             <p className="text-muted-foreground text-sm mb-5 leading-relaxed">{t("footer_brand_desc")}</p>
             <div className="flex gap-3">

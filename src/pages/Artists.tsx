@@ -60,6 +60,10 @@ const Artists = () => {
         <p className="text-sm font-medium text-primary mb-1">Ambassadors</p>
         <h1 className="font-display text-3xl md:text-4xl">Our <span className="gradient-text">Artists</span></h1>
         <p className="text-muted-foreground mt-2 text-sm">The voices and beats of eKasiBets. Follow your favourites for event drops & promo codes.</p>
+        <div className="mt-3 inline-flex items-start gap-2 text-xs bg-warning/10 border border-warning/40 text-foreground px-3 py-2 rounded-lg">
+          <span className="font-bold text-warning">Disclosure:</span>
+          <span>Artists shown here are <strong>desired partners</strong>. Formal endorsement and ambassador agreements are still being negotiated as part of our pre-launch phase.</span>
+        </div>
       </div>
 
       {loading ? (

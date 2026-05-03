@@ -44,6 +44,10 @@ const InfluencerPicks = () => {
         <p className="text-sm font-medium text-primary mb-1">Influencer Picks</p>
         <h1 className="font-display text-3xl md:text-4xl">The Word On <span className="gradient-text">The Street</span></h1>
         <p className="text-muted-foreground mt-2 text-sm">Predictions from real bettors and township voices. Not financial advice — bet responsibly.</p>
+        <div className="mt-3 inline-flex items-start gap-2 text-xs bg-warning/10 border border-warning/40 text-foreground px-3 py-2 rounded-lg">
+          <span className="font-bold text-warning">Disclosure:</span>
+          <span>Featured influencers are <strong>desired partners</strong>. Paid partnerships are still being formalised during our pre-launch phase.</span>
+        </div>
       </div>
 
       <div className="flex gap-2 mb-6 flex-wrap">

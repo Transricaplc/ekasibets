@@ -13,7 +13,7 @@ const ResponsibleStrip = () => {
         <a href="tel:0800006008" className="inline-flex items-center gap-1 text-success font-bold">
           <Phone size={11} /> NCPG 0800 006 008
         </a>
-        <span className="opacity-70">Licence: WCGRB (pending) · Operated by Transrica PLC</span>
+        <span className="opacity-70">Licence: WCGRB application in progress · Operated by Transrica PLC</span>
       </div>
     </div>
   );
