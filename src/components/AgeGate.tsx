@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ShieldAlert, Phone } from "lucide-react";
+import { ShieldAlert, Phone, AlertTriangle, Sparkles } from "lucide-react";
 
 const COOKIE_NAME = "ekasi_age_verified";
 const COOKIE_DAYS = 30;
@@ -47,14 +47,34 @@ const AgeGate = () => {
       aria-labelledby="agegate-title"
       className="fixed inset-0 z-[100] bg-pitch/95 backdrop-blur-md flex items-center justify-center p-4"
     >
-      <div className="w-full max-w-md card-kasi text-center">
+      <div className="w-full max-w-md card-kasi text-center max-h-[95vh] overflow-y-auto">
         <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/15 flex items-center justify-center">
           <ShieldAlert className="text-primary" size={32} />
         </div>
         <h1 id="agegate-title" className="font-display text-3xl mb-2">18+ Only</h1>
-        <p className="text-sm text-muted-foreground mb-5">
-          eKasibets is a licensed South African sports betting platform. By law (NGA 7 of 2004), you must be 18 or older to enter.
+        <p className="text-sm text-muted-foreground mb-4">
+          eKasiBets is a South African sports betting platform. By law (NGA 7 of 2004), you must be 18 or older to enter.
         </p>
+
+        {/* Pre-launch + partner disclosures (mandatory read at the gate) */}
+        <div className="text-left space-y-2 mb-4">
+          <div className="flex items-start gap-2 text-xs bg-warning/10 border border-warning/40 text-foreground px-3 py-2 rounded-lg">
+            <AlertTriangle size={14} className="text-warning mt-0.5 flex-shrink-0" />
+            <p>
+              <strong className="font-bold">Pre-launch notice:</strong> eKasiBets is in early-stage development.
+              Our Provincial Bookmaker's Licence application (WCGRB) is in progress and{" "}
+              <strong>no real-money wagers will be accepted</strong> until it's granted.
+            </p>
+          </div>
+          <div className="flex items-start gap-2 text-xs bg-primary/10 border border-primary/40 text-foreground px-3 py-2 rounded-lg">
+            <Sparkles size={14} className="text-primary mt-0.5 flex-shrink-0" />
+            <p>
+              <strong className="font-bold">Desired partners:</strong> Artists, ambassadors and influencers shown
+              on the site are <em>desired partners</em>. Formal endorsements and partnerships are still being
+              negotiated. All content is for preview purposes only.
+            </p>
+          </div>
+        </div>
 
         <label className="block text-left text-xs uppercase tracking-wider text-muted-foreground mb-1">
           Date of birth
@@ -74,7 +94,7 @@ const AgeGate = () => {
 
         <div className="flex gap-2">
           <button onClick={block} className="flex-1 btn-ghost text-xs py-3">I'm under 18</button>
-          <button onClick={confirm} className="flex-1 btn-kasi text-xs py-3">I'm 18 or older</button>
+          <button onClick={confirm} className="flex-1 btn-kasi text-xs py-3">I'm 18 or older — I understand</button>
         </div>
 
         <div className="mt-5 pt-4 border-t border-border text-[11px] text-muted-foreground">
@@ -82,7 +102,7 @@ const AgeGate = () => {
           <a href="tel:0800006008" className="inline-flex items-center gap-1.5 text-success font-bold">
             <Phone size={12} /> 0800 006 008
           </a>
-          <p className="mt-2 opacity-70">Licence: WCGRB Bookmaker (pending). T&Cs apply.</p>
+          <p className="mt-2 opacity-70">Licence: WCGRB Bookmaker (application in progress) · Operated by Transrica PLC. T&Cs apply.</p>
         </div>
       </div>
     </div>

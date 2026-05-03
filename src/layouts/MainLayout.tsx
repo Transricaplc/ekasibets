@@ -6,7 +6,6 @@ import AgeGate from "@/components/AgeGate";
 import ResponsibleStrip from "@/components/ResponsibleStrip";
 import SessionReminder from "@/components/SessionReminder";
 import InstallPrompt from "@/components/InstallPrompt";
-import PreLaunchBanner from "@/components/PreLaunchBanner";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -18,7 +17,6 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="flex-1 flex flex-col min-w-0 h-screen">
         <TopBar onMenuToggle={() => setSidebarOpen(true)} />
         <ResponsibleStrip />
-        <PreLaunchBanner />
         <main className="flex-1 overflow-y-auto">{children}</main>
       </div>
       <MiniPlayer />
