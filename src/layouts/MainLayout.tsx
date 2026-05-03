@@ -18,6 +18,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="flex-1 flex flex-col min-w-0 h-screen">
         <TopBar onMenuToggle={() => setSidebarOpen(true)} />
         <ResponsibleStrip />
+        <PreLaunchBanner />
         <main className="flex-1 overflow-y-auto">{children}</main>
       </div>
       <MiniPlayer />
