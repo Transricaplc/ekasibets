@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { X, Trash2, Zap, Loader2 } from "lucide-react";
+import { X, Trash2, Zap, Loader2, Share2 } from "lucide-react";
 import { useBetSlip } from "@/contexts/BetSlipContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sh
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { buildBetShareText, shareToWhatsApp } from "@/lib/share";
 
 const QUICK_STAKES = [10, 20, 50, 100];
 
@@ -45,7 +46,24 @@ const BetSlip = () => {
       toast.error(error.message ?? "Could not place bet");
       return;
     }
-    toast.success(`Bet placed! Ref: ${(data as any)?.reference}`);
+    const result = data as any;
+    const ref = result?.reference as string;
+    const shareText = buildBetShareText({
+      reference: ref,
+      stake: stakeNum,
+      totalOdds,
+      potentialPayout: potential,
+      selections: items.map((i) => ({
+        matchLabel: i.matchLabel,
+        marketName: i.marketName,
+        selectionLabel: i.selectionLabel,
+        odds: i.odds,
+      })),
+    });
+    toast.success(`Sharp! Bet placed · ${ref}`, {
+      action: { label: "Share on WhatsApp", onClick: () => shareToWhatsApp(shareText) },
+      duration: 8000,
+    });
     clear();
     setOpen(false);
     navigate("/my-bets");
