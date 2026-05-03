@@ -4,6 +4,7 @@ import TopBar from "@/components/TopBar";
 import MiniPlayer from "@/components/MiniPlayer";
 import AgeGate from "@/components/AgeGate";
 import ResponsibleStrip from "@/components/ResponsibleStrip";
+import SessionReminder from "@/components/SessionReminder";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -18,6 +19,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         <main className="flex-1 overflow-y-auto">{children}</main>
       </div>
       <MiniPlayer />
+      <SessionReminder />
     </div>
   );
 };
