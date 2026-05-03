@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Loader2, Trophy, Banknote, Download, FileText, Filter } from "lucide-react";
+import { Loader2, Trophy, Banknote, Download, FileText, Filter, Share2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { Badge } from "@/components/ui/badge";
@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
+import { buildBetShareText, shareToWhatsApp } from "@/lib/share";
 
 interface BetRow {
   id: string;
@@ -294,16 +295,35 @@ const MyBets = () => {
                   </div>
                 </div>
 
-                {b.status === "pending" && (
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {b.status === "pending" && (
+                    <button
+                      onClick={() => cashOut(b.id)}
+                      disabled={cashingOut === b.id}
+                      className="flex-1 min-w-[140px] flex items-center justify-center gap-2 px-3 py-2 rounded-lg border border-primary/40 text-primary hover:bg-primary/10 text-sm font-bold uppercase tracking-wide transition-colors"
+                    >
+                      {cashingOut === b.id ? <Loader2 className="animate-spin" size={14} /> : <Banknote size={14} />}
+                      Cash Out Now
+                    </button>
+                  )}
                   <button
-                    onClick={() => cashOut(b.id)}
-                    disabled={cashingOut === b.id}
-                    className="mt-3 w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg border border-primary/40 text-primary hover:bg-primary/10 text-sm font-bold uppercase tracking-wide transition-colors"
+                    onClick={() => shareToWhatsApp(buildBetShareText({
+                      reference: b.reference,
+                      stake: Number(b.stake),
+                      totalOdds: Number(b.total_odds),
+                      potentialPayout: Number(b.payout ?? b.potential_payout),
+                      selections: b.bet_selections.map((s) => ({
+                        matchLabel: s.match ? `${s.match.home_team} v ${s.match.away_team}` : undefined,
+                        marketName: s.market?.name,
+                        selectionLabel: s.selection?.label,
+                        odds: Number(s.odds_snapshot),
+                      })),
+                    }))}
+                    className="flex-1 min-w-[140px] flex items-center justify-center gap-2 px-3 py-2 rounded-lg border border-success/40 text-success hover:bg-success/10 text-sm font-bold uppercase tracking-wide transition-colors"
                   >
-                    {cashingOut === b.id ? <Loader2 className="animate-spin" size={14} /> : <Banknote size={14} />}
-                    Cash Out Now
+                    <Share2 size={14} /> WhatsApp
                   </button>
-                )}
+                </div>
               </div>
             );
           })}
