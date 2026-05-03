@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { AlertCircle, Clock, HeartHandshake, Shield, Phone, BookOpen, BarChart3, Target } from "lucide-react";
 import ResponsibleLimitsForm from "@/components/ResponsibleLimitsForm";
+import PgsiSelfTest from "@/components/PgsiSelfTest";
 
 const tools = [
   { icon: Target, title: "Deposit Limits", desc: "Set daily, weekly, or monthly limits on how much you can deposit. Stay in control of your spending." },
@@ -37,6 +38,11 @@ const ResponsibleGamingPage = () => {
           {/* Live limits manager */}
           <div className="mb-12">
             <ResponsibleLimitsForm />
+          </div>
+
+          {/* PGSI self-test */}
+          <div className="mb-12">
+            <PgsiSelfTest />
           </div>
 
           {/* Tools */}
