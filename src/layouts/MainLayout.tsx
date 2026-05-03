@@ -5,6 +5,7 @@ import MiniPlayer from "@/components/MiniPlayer";
 import AgeGate from "@/components/AgeGate";
 import ResponsibleStrip from "@/components/ResponsibleStrip";
 import SessionReminder from "@/components/SessionReminder";
+import InstallPrompt from "@/components/InstallPrompt";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -20,6 +21,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
       <MiniPlayer />
       <SessionReminder />
+      <InstallPrompt />
     </div>
   );
 };
